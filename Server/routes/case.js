@@ -11,9 +11,10 @@ const Case = require('../models/Case');
 
 router.post('/new', (req, res, next) => {
   const {
-    title, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
+    title, author, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
   } = req.body;
   console.log('This is the case title :', title);
+  console.log('This is the case Author Id :', author);
   console.log('This is the case description :', description);
   console.log('This is the case Image Name :', imgName);
   console.log('This is the case Image url : ', url);
@@ -28,6 +29,7 @@ router.post('/new', (req, res, next) => {
 
   const newCase = new Case({
     title,
+    author,
     description,
     imgName,
     url,
@@ -45,6 +47,26 @@ router.post('/new', (req, res, next) => {
     .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 });
 
-// /////////CASES EDIT////////////////
+// // /////////////////////CASES EDIT ROUTE////////////////////////
+// router.post('/:id/edit', (req, res, next) => {
+//   Case.findByIdAndUpdate({req.params.id}, (err, case) => {
+
+//   })
+// });
+
+
+// /////////////////// CASE DELETE ROUTE/////////////////////////
+
+
+router.delete('/:case_id',  (req, res, next) => {
+  Case.findByIdAndRemove(req.params.case_id, (err) => {
+    if (err) {
+      console.log('There was an error Deleting This Case : ', err);
+      res.status(500).json({ message: 'Something Went Wrong While Deleting This Case' });
+    } else {
+      res.status(200).json({ message: 'You have Successfully Deleted The Case' });
+    }
+  });
+});
 
 module.exports = router;
