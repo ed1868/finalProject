@@ -11,8 +11,10 @@ const Case = require('../models/Case');
 
 router.post('/new', (req, res, next) => {
   const {
-    title, author, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
+    title, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
   } = req.body;
+  const author = req._id;
+
   console.log('This is the case title :', title);
   console.log('This is the case Author Id :', author);
   console.log('This is the case description :', description);

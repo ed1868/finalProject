@@ -86,4 +86,8 @@ const caseRoutes = require('./routes/case');
 
 app.use('/cases', caseRoutes);
 
+const commentRoutes = require('./routes/comment');
+
+app.use('/comments', commentRoutes);
+
 module.exports = app;
