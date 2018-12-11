@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema(
+const caseSchema = new Schema(
   {
     title: {
       type: String,
@@ -30,6 +30,10 @@ const postSchema = new Schema(
     timeframe:String,
     urgencyLevel:Number,
     rateOfPain:Number,
+    systolic: Number,
+    diastolic: Number,
+    pulse: Number,
+    oxygen: Number,
   },
   {
     timestamps: {
@@ -39,5 +43,5 @@ const postSchema = new Schema(
   },
 );
 
-const Post = mongoose.model('Post', userSchema);
-module.exports = Post;
+const Case = mongoose.model('Case', caseSchema);
+module.exports = Case;
