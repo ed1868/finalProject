@@ -1,40 +1,55 @@
-const express = require("express");
+const express = require('express');
 const passport = require('passport');
-const router = express.Router();
-const User = require("../models/User");
 
+const router = express.Router();
+const bcrypt = require('bcrypt');
+const User = require('../models/User');
 // Bcrypt to encrypt passwords
-const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
-router.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
+const login = (req, user) => new Promise((resolve, reject) => {
+  req.login(user, (err) => {
+    console.log('req.login ');
+    console.log(user);
+    if (err) {
+      reject(new Error('Something went wrong'));
+    } else {
+      resolve(user);
+    }
+  });
 });
 
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
-
-router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+// ///////////////////LOGIN ROUTE//////////////////////////////
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user,  info) => {
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/login'); }
+    login(req, user).then(user => res.status(200).json(req.user));
+  })(req, res, next);
 });
 
-router.post("/signup", (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+// ///////////////////SIGN UP ROUTE////////////////////////////
+router.post('/signup', (req, res, next) => {
+  const {
+    username, password, email, imgName, name, dob, medicalLicenseNumber, gender,
+  } = req.body;
+  console.log('This is the username :', username);
+  console.log('This is the password :', password);
+  console.log('This is the email :', email);
+  console.log('This is the Image Name : ', imgName);
+  console.log('This is the users name : ', name);
+  console.log('This is the DOB: ', dob);
+  console.log('This is the users Medical License Number: ', medicalLicenseNumber);
+  console.log('This is the Gender: ', gender);
+  if (username === '' || password === '') {
+    res.json({ message: 'You must provide valid credentials' });
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ username }, 'username', (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
-      return;
+      return res.json({ message: 'The username already exists' });
     }
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -42,22 +57,26 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      email,
+      imgName,
+      name,
+      dob,
+      medicalLicenseNumber,
+      gender,
     });
 
     newUser.save()
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
-    })
+      .then(savedUser => res.status(200).json(savedUser))
+      .catch(err => res.status(500).json({ message: 'Something went wrong' }));
   });
 });
 
-router.get("/logout", (req, res) => {
+// /////////////////////LOG OUT ROUTE///////////////////////
+router.post('/logout', (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.status(200).json({ message:'You Logged Out Sucessfully' });
 });
+
 
 module.exports = router;
