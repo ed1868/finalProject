@@ -11,8 +11,10 @@ const Comment = require('../models/Comment');
 
 router.post('/new', (req, res, next) => {
   const {
-    text, title, author,
+    text, title,
   } = req.body;
+  const author = req.user._id;
+
   console.log('This is the comment title :', title);
   console.log('This is the comment Author Id :', author);
   console.log('This is the comment text :', text);
@@ -29,12 +31,15 @@ router.post('/new', (req, res, next) => {
     .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 });
 
-// // /////////////////////CASES EDIT ROUTE////////////////////////
-// router.post('/:id/edit', (req, res, next) => {
-//   Case.findByIdAndUpdate({req.params.id}, (err, case) => {
-
-//   })
-// });
+// // /////////////////////COMMENT EDIT ROUTE////////////////////////
+router.post('/:id/edit', (req, res, next) => {
+  const { title, text } = req.body;
+  console.log('This user wants To Edit the Comment title to : ', title);
+  console.log('This user wants To Edit the Comment text to : ', text);
+  Comment.findByIdAndUpdate({ _id:req.params.id }, { title, text })
+    .then(() => res.status(200).json({ message:'you updated mothafucka' }))
+    .catch(err => res.status(500).json({ message: 'Something Went Wrong Editing This Comment' }));
+});
 
 
 // /////////////////// COMMENT DELETE ROUTE/////////////////////////

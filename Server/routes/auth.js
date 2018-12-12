@@ -24,24 +24,52 @@ const login = (req, user) => new Promise((resolve, reject) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user,  info) => {
     if (err) { return next(err); }
-    if (!user) { return res.redirect('/login'); }
+    if (!user) { return res.json({ message:'Unautharized ' }); }
     login(req, user).then(user => res.status(200).json(req.user));
   })(req, res, next);
+});
+
+
+router.get('/loggedin', (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.status(200).json(req.user);
+  }
+  return res.status(403).json({ message: 'Unauthorized' });
+});
+
+// ////////////////////////USER EDIT ROUTE ///////////////////////
+router.post('/:id/edit', (req, res, next) => {
+  const {
+    username, name, gender, imgName, url,
+  } = req.body;
+  console.log('This user wants To Edit its username to : ', username);
+  console.log('This user wants To Edit its name to : ', name);
+  console.log('This user wants To Edit its gender to : ', gender);
+  console.log('This user wants To Edit its imgName to : ', imgName);
+  console.log('This user wants To Edit its url to : ', url);
+
+  User.findByIdAndUpdate({ _id:req.params.id }, {
+    username, name, gender, imgName, url,
+  })
+    .then(() => res.status(200).json({ message:'you updated mothafucka' }))
+    .catch(err => res.status(500).json({ message: 'Something Went Wrong Editing This User' }));
 });
 
 // ///////////////////SIGN UP ROUTE////////////////////////////
 router.post('/signup', (req, res, next) => {
   const {
-    username, password, email, imgName, name, dob, medicalLicenseNumber, gender,
+    username, password, email, imgName, url, name, dob, medicalLicenseNumber, gender, experience,
   } = req.body;
   console.log('This is the username :', username);
   console.log('This is the password :', password);
   console.log('This is the email :', email);
   console.log('This is the Image Name : ', imgName);
+  console.log('This is the Image url : ', url);
   console.log('This is the users name : ', name);
   console.log('This is the DOB: ', dob);
   console.log('This is the users Medical License Number: ', medicalLicenseNumber);
   console.log('This is the Gender: ', gender);
+  console.log('This is the Experience: ', experience);
   if (username === '' || password === '') {
     res.json({ message: 'You must provide valid credentials' });
     return;
@@ -60,15 +88,17 @@ router.post('/signup', (req, res, next) => {
       password: hashPass,
       email,
       imgName,
+      url,
       name,
       dob,
       medicalLicenseNumber,
       gender,
+      experience,
     });
 
     newUser.save()
       .then(savedUser => res.status(200).json(savedUser))
-      .catch(err => res.status(500).json({ message: 'Something went wrong' }));
+      .catch(err => res.status(500).json({ message: 'Something went wrong', err }));
   });
 });
 

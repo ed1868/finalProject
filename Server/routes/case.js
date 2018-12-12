@@ -13,7 +13,7 @@ router.post('/new', (req, res, next) => {
   const {
     title, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
   } = req.body;
-  const author = req._id;
+  const author = req.user._id;
 
   console.log('This is the case title :', title);
   console.log('This is the case Author Id :', author);
@@ -50,11 +50,29 @@ router.post('/new', (req, res, next) => {
 });
 
 // // /////////////////////CASES EDIT ROUTE////////////////////////
-// router.post('/:id/edit', (req, res, next) => {
-//   Case.findByIdAndUpdate({req.params.id}, (err, case) => {
+router.post('/:id/edit', (req, res, next) => {
+  const {
+    title, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
+  } = req.body;
+  console.log('This user wants To Edit The Cases title to : ', title);
+  console.log('This user wants To Edit The Cases description to : ', description);
+  console.log('This user wants To Edit The Cases imgName to : ', imgName);
+  console.log('This user wants To Edit The Cases url to : ', url);
+  console.log('This user wants To Edit The Cases symptoms to : ', symptoms);
+  console.log('This user wants To Edit The Cases timeframe to : ', timeframe);
+  console.log('This user wants To Edit The Cases urgency Level to : ', urgencyLevel);
+  console.log('This user wants To Edit The Cases rate of pain to : ', rateOfPain);
+  console.log('This user wants To Edit The Cases systolic to : ', systolic);
+  console.log('This user wants To Edit The Cases diastolic to : ', diastolic);
+  console.log('This user wants To Edit The Cases oxygen to : ', oxygen);
 
-//   })
-// });
+
+  Case.findByIdAndUpdate({ _id:req.params.id }, {
+    title, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
+  })
+    .then(() => res.status(200).json({ message:'you updated mothafucka' }))
+    .catch(err => res.status(500).json({ message: 'Something Went Wrong Editing This Case' }));
+});
 
 
 // /////////////////// CASE DELETE ROUTE/////////////////////////
