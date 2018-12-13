@@ -31,9 +31,9 @@ const userSchema = new Schema(
       default:'../public/images/Medical-Logo.png',
     },
     name: String,
-    dob: Number,
+    dob: String,
     medicalLicenseNumber: {
-      type: Number,
+      type: String,
       required: true,
     },
     gender:{

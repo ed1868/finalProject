@@ -4,6 +4,7 @@ const passport = require('passport');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const uploadCload = require('../config/cloudinary');
 // Bcrypt to encrypt passwords
 const bcryptSalt = 10;
 
@@ -38,7 +39,7 @@ router.get('/loggedin', (req, res) => {
 });
 
 // ////////////////////////USER EDIT ROUTE ///////////////////////
-router.post('/:id/edit', (req, res, next) => {
+router.post('/:id/edit', uploadCload.single('url'), (req, res, next) => {
   const {
     username, name, gender, imgName, url,
   } = req.body;
@@ -56,14 +57,15 @@ router.post('/:id/edit', (req, res, next) => {
 });
 
 // ///////////////////SIGN UP ROUTE////////////////////////////
-router.post('/signup', (req, res, next) => {
+router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
   const {
-    username, password, email, imgName, url, name, dob, medicalLicenseNumber, gender, experience,
+    username, password, email, name, dob, medicalLicenseNumber, gender, experience,
   } = req.body;
+  const { url } = req.file;
+  console.log(req.body);
   console.log('This is the username :', username);
   console.log('This is the password :', password);
   console.log('This is the email :', email);
-  console.log('This is the Image Name : ', imgName);
   console.log('This is the Image url : ', url);
   console.log('This is the users name : ', name);
   console.log('This is the DOB: ', dob);
@@ -87,7 +89,6 @@ router.post('/signup', (req, res, next) => {
       username,
       password: hashPass,
       email,
-      imgName,
       url,
       name,
       dob,
@@ -95,9 +96,19 @@ router.post('/signup', (req, res, next) => {
       gender,
       experience,
     });
-
-    newUser.save()
-      .then(savedUser => res.status(200).json(savedUser))
+    console.log(newUser);
+    User.create({
+      username,
+      password: hashPass,
+      email,
+      url,
+      name,
+      dob:parseInt(dob),
+      medicalLicenseNumber:parseInt(medicalLicenseNumber),
+      gender,
+      experience,
+    })
+      .then((savedUser) => { console.log('----------------'); res.status(200).json(savedUser); })
       .catch(err => res.status(500).json({ message: 'Something went wrong', err }));
   });
 });

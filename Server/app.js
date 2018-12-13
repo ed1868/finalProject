@@ -4,7 +4,7 @@ const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
+
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
@@ -12,7 +12,7 @@ const path         = require('path');
 const session    = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash      = require('connect-flash');
-
+const cors       = require('cors');
 
 mongoose
   .connect('mongodb://localhost/Server', { useNewUrlParser: true })
@@ -43,19 +43,8 @@ app.use(require('node-sass-middleware')({
 }));
 
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
-
-hbs.registerHelper('ifUndefined', (value, options) => {
-  if (arguments.length < 2) { throw new Error('Handlebars Helper ifUndefined needs 1 parameter'); }
-  if (typeof value !== undefined) {
-    return options.inverse(this);
-  }
-  return options.fn(this);
-});
 
 
 // default value for title local
@@ -71,6 +60,11 @@ app.use(session({
 }));
 app.use(flash());
 require('./passport')(app);
+
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000'],
+}));
 
 
 const index = require('./routes/index');
@@ -90,4 +84,8 @@ const commentRoutes = require('./routes/comment');
 
 app.use('/comments', commentRoutes);
 
+
+app.use((req, res) => {
+  res.sendFile(`${__dirname}/public/index.html`);
+});
 module.exports = app;
