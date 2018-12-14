@@ -104,7 +104,7 @@ export default class Signup extends Component {
             name="name"
             onChange={e => this.handleChange(e)}
           />
-
+          
           <label>Password :</label>
           <input
             type="password"
@@ -125,11 +125,7 @@ export default class Signup extends Component {
           />
 
           <label>Gender : </label>
-          {/* <select name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select> */}
+
           <input type="text" name="gender" placeholder="Male, Female or Other.." onChange={e => this.handleChange(e)} />
           
           <label>Medical Experience : </label>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
-import AppBar from '@material-ui/core/AppBar';
+
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ export default class NavBar extends Component {
      this.props.logout();
    }
   render() {
+
     if(this.state.loggedInUser){ 
     return (
       <div>
@@ -25,6 +26,7 @@ export default class NavBar extends Component {
             <li><a onClick={this.logOutHandler}>LogOut Broski</a></li>
           </ul>
           <h1>Welcome, {this.state.loggedInUser.username}</h1>
+          <li><Link to='/logout'>LogOut Playa</Link></li>
         </nav>
       </div>
     )
@@ -33,8 +35,12 @@ export default class NavBar extends Component {
       <div>
         <nav className="nav-style">
           <ul>
+
             <li><Link to='/signup'>SignUp Playa</Link></li>
             <li><Link to='/login'>Login Playa</Link></li>
+            <li><Link to='/cases'>Cases</Link></li>
+            <li><Link to='/community'>Community</Link></li>
+            
           </ul>
         </nav>
       </div>

@@ -1,3 +1,5 @@
+// import axios from 'axios';
+
 const express = require('express');
 const passport = require('passport');
 
@@ -7,6 +9,15 @@ const Case = require('../models/Case');
 
 
 // ///////////////////CASES ROUTE////////////////////////////
+
+router.get('/', (req, res, next) => {
+  Case.find({}, (err, cases) => {
+    if (cases == null) {
+      return res.json({ message: 'No Cases Up in Here' });
+    }
+    return res.json({ cases });
+  });
+});
 
 
 router.post('/new', (req, res, next) => {

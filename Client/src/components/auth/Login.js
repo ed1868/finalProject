@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
-import LogInForm from './LoginForm/LogInForm';
+// import LogInForm from './LoginForm/LogInForm';
 
 export default class Login extends Component {
   constructor() {
@@ -34,14 +34,14 @@ export default class Login extends Component {
       <div>
         <h2>Login</h2>
         <form onSubmit={this.handleFormSubmit}>
-        <LogInForm />
-          {/* <label>Username</label>
+        {/* <LogInForm /> */}
+          <label>Username</label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />
 
           <label>Password</label>
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
 
-          <input type="submit" value="Login"/> */}
+          <input type="submit" value="Login"/>
         </form>
       </div>
     )
