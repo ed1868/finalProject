@@ -10,7 +10,7 @@ class Lexigram {
 
   search = (query) => {
     
-    return this.service.post('/login', query)
+    return this.service.post('/, query){
     .then(response => response.data)
   }
 

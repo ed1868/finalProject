@@ -76,6 +76,7 @@ export default class Cases extends Component {
                 </div>
                 <div>
                   <p>{cases.description}</p>
+                  <quote>{cases.author}</quote>
                 </div>
               </div>
             );

@@ -16,9 +16,9 @@ export default class NavBar extends Component {
    logOutHandler = (e) =>{
      this.props.logout();
    }
-  render() {
-
-    if(this.state.loggedInUser){ 
+   render() {
+     if(this.state.loggedInUser){ 
+       console.log(this.state.loggedInUser)
     return (
       <div>
         <nav className="nav-style">
