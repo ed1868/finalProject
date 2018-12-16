@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom"
 import axios from "axios";
 
 const casesApi = axios.create({
@@ -36,7 +37,7 @@ export default class Cases extends Component {
                 <div />
                 <div>
                   <h1>
-                    Title : <span>{cases.title}</span>{" "}
+                    Title : <Link to={`cases/${cases._id}`}>{cases.title} </Link>
                   </h1>
                   <h2>
                     Urgency Level : <span>{cases.urgencyLevel}</span>

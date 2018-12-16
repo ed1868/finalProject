@@ -1,0 +1,38 @@
+  {
+   "title": "Blunt Force Trauma",
+    "description": "Patient has blunt force trauma to occipital bone in which the bone has peneatrated sinuses ",
+    "imgName": "Xray of Patient",
+    "symptoms": "Facial Swelling, nose bleed, blurred vision, loss of consiousness",
+    "timeframe": "2 hours",
+    "urgencyLevel": "2",
+    "rateOfPain": "10",
+    "systolic": "80",
+    "diastolic": "112",
+    "oxygen": "96"
+    }
+
+    {
+   "title": "Patient W/ Diabetes",
+    "description": "Patient has type One diabetes with hyperglycemia ",
+    "imgName": "BloodSugar Level",
+    "symptoms": "High Blood Pressure, glucose level is 530, short of breath , no fever but is sweating... patient is dizzy and feels a syncope comming",
+    "timeframe": "1 hours",
+    "urgencyLevel": "1",
+    "rateOfPain": "8",
+    "systolic": "118",
+    "diastolic": "190",
+    "oxygen": "98"
+}
+
+  {
+   "title": "Neutropinic Fever Alert",
+    "description": "Patient has blunt force trauma to occipital bone in which the bone has peneatrated sinuses ",
+    "imgName": "Xray of Patient",
+    "symptoms": "Facial Swelling, nose bleed, blurred vision, loss of consiousness",
+    "timeframe": "2 hours",
+    "urgencyLevel": "2",
+    "rateOfPain": "10",
+    "systolic": "80",
+    "diastolic": "112",
+    "oxygen": "96"
+    }

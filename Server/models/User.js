@@ -17,10 +17,6 @@ const userSchema = new Schema(
       enum: ['Pending Confirmation', 'Active'],
       default: 'Pending Confirmation',
     },
-    confirmationCode: {
-      type: String,
-      unique: true,
-    },
     password: {
       type: String,
       required: true,
@@ -41,6 +37,12 @@ const userSchema = new Schema(
       enum: ['Male', 'Female', 'Other'],
     },
     experience: Number,
+    messages: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message"
+      }
+    ],
   },
   {
     timestamps: {
@@ -49,6 +51,7 @@ const userSchema = new Schema(
     },
   },
 );
+
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

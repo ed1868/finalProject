@@ -1,7 +1,7 @@
 // import axios from 'axios';
 
 const express = require('express');
-const passport = require('passport');
+
 
 const router = express.Router();
 
@@ -25,9 +25,13 @@ router.post('/new', (req, res, next) => {
     title, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
   } = req.body;
   const author = req.user._id;
+  const authorName = req.user.username
+  
+
 
   console.log('This is the case title :', title);
   console.log('This is the case Author Id :', author);
+  console.log('This is the case Author username :', authorName);
   console.log('This is the case description :', description);
   console.log('This is the case Image Name :', imgName);
   console.log('This is the case Image url : ', url);
@@ -43,6 +47,7 @@ router.post('/new', (req, res, next) => {
   const newCase = new Case({
     title,
     author,
+    authorName,
     description,
     imgName,
     url,

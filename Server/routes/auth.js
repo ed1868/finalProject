@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 
+
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
@@ -11,7 +12,6 @@ const bcryptSalt = 10;
 
 const login = (req, user) => new Promise((resolve, reject) => {
   req.login(user, (err) => {
-    console.log('req.login ');
     console.log(user);
     if (err) {
       reject(new Error('Something went wrong'));
@@ -26,12 +26,16 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user,  info) => {
     if (err) { return next(err); }
     if (!user) { return res.json({ message:'Unautharized ' }); }
-    login(req, user).then(user => res.status(200).json(req.user));
+    req.logIn(user, (err) => {
+      if (err) { return res.status(500).json({ message: 'Error login' }); }
+      return res.status(200).json(user);
+    });
   })(req, res, next);
 });
 
 
 router.get('/loggedin', (req, res) => {
+  console.log('THIS IS WHAT YOU ARE LOOKING FOR', req.user);
   if (req.isAuthenticated()) {
     return res.status(200).json(req.user);
   }
@@ -59,9 +63,10 @@ router.post('/:id/edit', uploadCload.single('url'), (req, res, next) => {
 // ///////////////////SIGN UP ROUTE////////////////////////////
 router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
   const {
-    username, password, email, name, dob, medicalLicenseNumber, gender, experience,
+    username, password, email, url,name, dob, medicalLicenseNumber, gender, experience,
   } = req.body;
-  const { url } = req.file;
+
+
   console.log(req.body);
   console.log('This is the username :', username);
   console.log('This is the password :', password);
@@ -84,7 +89,7 @@ router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-
+    
     const newUser = new User({
       username,
       password: hashPass,
@@ -95,6 +100,7 @@ router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
       medicalLicenseNumber,
       gender,
       experience,
+
     });
     console.log(newUser);
     User.create({
@@ -103,13 +109,23 @@ router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
       email,
       url,
       name,
-      dob:parseInt(dob),
-      medicalLicenseNumber:parseInt(medicalLicenseNumber),
+      dob,
+      medicalLicenseNumber,
       gender,
       experience,
+
     })
-      .then((savedUser) => { console.log('----------------'); res.status(200).json(savedUser); })
-      .catch(err => res.status(500).json({ message: 'Something went wrong', err }));
+
+      .then((savedUser) => { 
+        console.log('----------------'); 
+        console.log(savedUser._id);
+      
+        res.status(200).json(savedUser); 
+      }) .catch(err => {
+        console.log(err)
+        res.status(500).json({ message: 'Something went wrong', err })
+      });
+
   });
 });
 

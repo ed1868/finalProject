@@ -12,6 +12,7 @@ const caseSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
+    authorName: String,
     description: {
       type: String,
       required: true,

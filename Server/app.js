@@ -1,18 +1,21 @@
 require('dotenv').config();
 
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
+const bodyParser   = require('body-parser'),
+      cookieParser = require('cookie-parser'),
+      express      = require('express'),
+      favicon      = require('serve-favicon'),
 
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const path         = require('path');
+      mongoose     = require('mongoose'),
+      logger       = require('morgan'),
+      path         = require('path'),
 
-const session    = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const flash      = require('connect-flash');
-const cors       = require('cors');
+      session    = require('express-session'),
+      MongoStore = require('connect-mongo')(session),
+      flash      = require('connect-flash'),
+      cors       = require('cors');
+      
+  //  const { loginRequired, ensureCorrectUser } = require('./middleware/auth');
+
 
 mongoose
   .connect('mongodb://localhost/Server', { useNewUrlParser: true })
@@ -84,6 +87,14 @@ const commentRoutes = require('./routes/comment');
 
 app.use('/comments', commentRoutes);
 
+const messageRoutes = require('./routes/messages');
+
+// app.use('/community', loginRequired,ensureCorrectUser, messageRoutes);
+
+app.use(
+  '/community/:id/messages',
+  messageRoutes
+);
 
 app.use((req, res) => {
   res.sendFile(`${__dirname}/public/index.html`);

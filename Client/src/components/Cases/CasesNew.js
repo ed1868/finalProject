@@ -56,48 +56,6 @@ export default class Cases extends Component {
       redirect
     } = this.state;
 
-    this.case
-      .signup({
-        title,
-        description,
-        comments,
-        url,
-        symptomsOne,
-        symptomsTwo,
-        symptomsThree,
-        symptomsFour,
-        symptomsFive,
-        timeframe,
-        urgencyLevel,
-        rateOfPain,
-        systolic,
-        diastolic,
-        pulse,
-        oxygen,
-        redirect
-      })
-      .then(user => {
-        this.props.getUser(user);
-        this.setState({
-          title: "",
-          description: "",
-          comments: "",
-          url: "",
-          symptomsOne: "",
-          symptomsTwo: "",
-          symptomsThree: "",
-          symptomsFour: "",
-          symptomsFive: "",
-          timeframe: "",
-          urgencyLevel: "",
-          rateOfPain: "",
-          systolic: "",
-          diastolic: "",
-          pulse: "",
-          oxygen: "",
-          redirect: false
-        });
-      });
   };
 
   handleChange = e => {
@@ -126,6 +84,7 @@ export default class Cases extends Component {
           <form onSubmit={this.handleFormSubmit}>
             <label>Case Title : </label>
             <input
+              value={this.state.title}
               type="text"
               name="case"
               onChange={e => this.handleChange(e)}
