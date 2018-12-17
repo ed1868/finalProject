@@ -10,6 +10,8 @@ import { Provider } from "react-redux";
 import { configureStore } from "../Store";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import Community from "../Community/Community";
+import Main from "../Containers/Main";
 
 const store = configureStore();
 
@@ -36,8 +38,6 @@ class App extends Component {
     this.setState({ ...this.state, user });
   };
 
-
-
   logout = () => {
     this.authService
       .logout()
@@ -51,6 +51,11 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Switch>
+            <Route
+                exact
+                path="/"
+                render={() => <Main getUser={this.getUser} />}
+              />
               <Route
                 exact
                 path="/signup"
@@ -72,9 +77,14 @@ class App extends Component {
                 path="/cases/new"
                 render={() => <CasesNew getUser={this.getUser} />}
               />
-
+              <Route
+                exact
+                path="/community"
+                render={() => <Community getUser={this.getUser} />}
+              />
               {/* <Route exact path="/cases/:id" component={}/> 
         <Route exact path="/community" component={} />
+              
         <Route exact path="/user-profile" component={} /> */}
             </Switch>
           </div>

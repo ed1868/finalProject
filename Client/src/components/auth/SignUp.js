@@ -86,53 +86,101 @@ export default class Signup extends Component {
 
     return (
       <div>
-        <h2>Signup</h2>
+       
+        <div className="row justify-content-md-center text-center">
+          <div className="col-md-6">
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username :</label>
-          <input
-            type="text"
-            name="username"
-            onChange={e => this.handleChange(e)}
-          />
+        <h2>Become Part of The [vital]ity Community ! </h2>
+        <label htmlFor="username">Username : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="username"
+                  name="username"
+                  onChange={e => this.handleChange(e)}
+                  type="text"
+                />
 
-          <label>Email :</label>
-          <input type="email" name="email" onChange={e => this.handleChange(e)} />
+                <label htmlFor="email">Email : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  onChange={e => this.handleChange(e)}
+                  type="email"
+                />
+                <label htmlFor="name">Name : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  onChange={e => this.handleChange(e)}
+                  type="text"
+                />
+                <label htmlFor="password">Password : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  onChange={e => this.handleChange(e)}
+                  type="password"
+                />
+                <label htmlFor="url">Profile Photo : </label>
+                <input className="form-control" type="file" name="url" onChange={e => this.handleChange(e)} />
 
-          <label>Name :</label>
-          <input
-            type="text"
-            name="name"
-            onChange={e => this.handleChange(e)}
-          />
+                <label htmlFor="dob">Date Of Birth : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="dob"
+                  name="dob"
+                  onChange={e => this.handleChange(e)}
+                  type="date"
+                />
+
+                <label htmlFor="medicalLicenseNumber">Medical License Number : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="medicalLicenseNumber"
+                  name="medicalLicenseNumber"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+
+                <label htmlFor="gender">Gender : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="gender"
+                  name="gender"
+                  placeholder="Male , Female , Other"
+                  onChange={e => this.handleChange(e)}
+                  type="text"
+                />
+                <label htmlFor="experience">Years Of Experience : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="experience"
+                  name="experience"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+                <br></br>
           
-          <label>Password :</label>
-          <input
-            type="password"
-            name="password"
-            onChange={e => this.handleChange(e)}
-          />
-          <label>Photo Url</label>
-          <input type="file" name="url" onChange={e => this.handleChange(e)} />
-
-          <label>Date Of Birth : </label>
-          <input type="date" name="dob" onChange={e => this.handleChange(e)} />
-
-          <label>Physician Medical Lincense Number : </label>
-          <input
-            type="number"
-            name="medicalLicenseNumber"
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Gender : </label>
-
-          <input type="text" name="gender" placeholder="Male, Female or Other.." onChange={e => this.handleChange(e)} />
-          
-          <label>Medical Experience : </label>
-          <input type="number" name="experience"  onChange={e => this.handleChange(e)} />
-          
-          <input type="submit" value="Signup" />
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block btn-lg"
+                >
+                  Sign Me Up
+                </button>
         </form>
+        </div>
+        </div>
       </div>
     );
   }
