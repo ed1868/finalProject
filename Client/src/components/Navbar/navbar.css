@@ -1,0 +1,26 @@
+.navbar{
+  margin-bottom: 1rem;
+}
+
+.navbar a{
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color:purple;
+  text-decoration: underline;
+  cursor: crosshair;
+}
+
+.navbar-header> img {
+  display: inline-block;
+  width: 90px;
+  height:80px;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+ul.nav.navbar-nav li {
+  margin: 0 0.5rem;
+}

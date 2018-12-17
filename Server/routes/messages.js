@@ -4,8 +4,8 @@ const Message = require('../models/Message');
 
 const {
   createMessage,
-  // getMessage,
-  // deleteMessage
+  getMessage,
+  deleteMessage
 } = require("../handlers/messages");
 
 
@@ -28,6 +28,29 @@ router.get("/community", async function(req, res, next) {
 //  - /community/:id/messages
 router.route("/").post(createMessage);
 
+
+// GET - /community/:id/messages/:message_id
+exports.getMessage = async function(req, res, next) {
+  try {
+    let message = await Message.find(req.params.message_id);
+    return res.status(200).json(message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+// DELETE /community/:id/messages/:message_id
+
+exports.deleteMessage = async function(req, res, next) {
+  try {
+    let foundMessage = await Message.findById(req.params.message_id);
+    await foundMessage.remove();
+
+    return res.status(200).json(foundMessage);
+  } catch (err) {
+    return next(err);
+  }
+};
 //  - /community/:id/messages/:message_id
 router
   .route("/:message_id")

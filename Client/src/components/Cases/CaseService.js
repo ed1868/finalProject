@@ -1,19 +1,19 @@
 import axios from "axios";
 
-class AuthService {
+class CaseService {
   constructor() {
     this.service = axios.create({
-      baseURL: "http://localhost:5000/auth",
+      baseURL: "http://localhost:5000/cases",
       withCredentials: true
     })
   }
 
-  signup = (user) => {
+  addCase = (cases) => {
     const formData = new FormData();
-    Object.keys(user).forEach(key => formData.append(key, user[key]));
-    console.log(user)
+    Object.keys(cases).forEach(key => formData.append(key, cases[key]));
+    console.log(cases)
     
-    return this.service.post('/signup', formData,{
+    return this.service.post('/new', formData,{
       headers: {
         "Content-Type": "multipart/form-data"
       }
@@ -24,22 +24,7 @@ class AuthService {
   ).then(response => response.data)
     }
 
-
-  login = (user) => {
-
-    return this.service.post('/login', user)
-    .then(response => response.data)
   }
+  
 
-  loggedin = () => {
-    return this.service.get('/loggedin')
-    .then(response => response.data);
-  }
-
-  logout = () => {
-    return this.service.get('/logout')
-    .then(response => response.data);
-  }
-}
-
-export default AuthService;
+export default CaseService;

@@ -1,6 +1,8 @@
 import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
-import Symptoms from "./Symptoms/Symptoms"
+
+
+import CaseService from './CaseService'
 
 
 
@@ -15,22 +17,17 @@ export default class Cases extends Component {
       description: "",
       comments: "",
       url: "",
-      symptomsOne: "",
-      symptomsTwo: "",
-      symptomsThree: "",
-      symptomsFour: "",
-      symptomsFive: "",
+      symptoms: "",
       timeframe: "",
       urgencyLevel: "",
       rateOfPain: "",
       systolic: "",
       diastolic: "",
-      pulse: "",
       oxygen: "",
       redirect: false,
       selectedOption: null
     };
-    // this.authService = new AuthService();
+    this.CaseService = new CaseService();
   }
 
   handleFormSubmit = e => {
@@ -41,22 +38,52 @@ export default class Cases extends Component {
       description,
       comments,
       url,
-      symptomsOne,
-      symptomsTwo,
-      symptomsThree,
-      symptomsFour,
-      symptomsFive,
+      symptoms,
       timeframe,
       urgencyLevel,
       rateOfPain,
       systolic,
       diastolic,
-      pulse,
       oxygen,
       redirect
     } = this.state;
 
-  };
+    this.CaseService
+    .addCase({
+      title,
+      description,
+      comments,
+      url,
+      symptoms,
+      timeframe,
+      urgencyLevel,
+      rateOfPain,
+      systolic,
+      diastolic,
+      oxygen,
+      redirect
+    })
+    .then(cases => {
+
+      this.setState({
+        title: "",
+        description: "",
+        comments: "",
+        url: "",
+        symptoms: "",
+        timeframe: "",
+        urgencyLevel: "",
+        rateOfPain: "",
+        systolic: "",
+        diastolic: "",
+        oxygen: "",
+        redirect: false,
+      });
+    });
+};
+
+  
+  
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -68,14 +95,9 @@ export default class Cases extends Component {
     }
   };
 
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
-  };
+
 
   render() {
-    const { selectedOption } = this.state;
-
     if (this.state && this.state.redirect) {
       return <Redirect to="/" />;
     } else {
@@ -84,54 +106,31 @@ export default class Cases extends Component {
           <form onSubmit={this.handleFormSubmit}>
             <label>Case Title : </label>
             <input
-              value={this.state.title}
+              // value={this.state.title}
               type="text"
-              name="case"
+              name="title"
               onChange={e => this.handleChange(e)}
             />
             <br />
             <label>Urgency Level : </label>
-            <input type="number" name="urgencyLevel" />
+            <input type="number" value={this.state.urgencyLevel}name="urgencyLevel" onChange={e => this.handleChange(e)}/>
             <br />
             <br />
             <label>Symptoms : </label>
             <br />
-            <Symptoms />
-            {/* <input
+            <input 
               type="text"
-              name="symptomsOne"
+              name="symptoms"
+              // value="symptoms"
               onChange={e => this.handleChange(e)}
-            />
-            <br />
-            <input
-              type="text"
-              name="symptomsTwo"
-              onChange={e => this.handleChange(e)}
-            />
-            <br />
-            <input
-              type="text"
-              name="symptomsThree"
-              onChange={e => this.handleChange(e)}
-            />
-            <br />
-            <input
-              type="text"
-              name="symptomsFour"
-              onChange={e => this.handleChange(e)}
-            />
-            <br />
-            <input
-              type="text"
-              name="symptomsFive"
-              onChange={e => this.handleChange(e)}
-            /> */}
+              />
             <br />
             <label>Time Frame Of Symptoms : </label>
             <br />
             <input
               type="text"
-              name="name"
+              name="timeframe"
+              // value={this.state.timeframe}
               onChange={e => this.handleChange(e)}
             />
             <br />
@@ -141,15 +140,15 @@ export default class Cases extends Component {
             <br />
             <div>
               <label>Systolic : </label>
-              <input type="number" name="systolic" />
+              <input type="number" name="systolic" onChange={e => this.handleChange(e)}/>
             </div>
             <div>
               <label>Diastolic : </label>
-              <input type="number" name="diastolic" />
+              <input type="number" name="diastolic"  onChange={e => this.handleChange(e)}/>
             </div>
             <div>
               <label>Oxygen : </label>
-              <input type="number" name="oxygen" />
+              <input type="number" name="oxygen"  onChange={e => this.handleChange(e)}/>
             </div>
             <div>
               <br />
@@ -166,6 +165,7 @@ export default class Cases extends Component {
               <input
                 type="number"
                 name="rateOfPain"
+                
                 onChange={e => this.handleChange(e)}
               />
             </div>
@@ -175,7 +175,9 @@ export default class Cases extends Component {
 
               <textarea
                 name="description"
+               
                 placeholder="41 Year Old Male w/ has Suffered Blunt Force Trauma To frontal lobe"
+                onChange={e => this.handleChange(e)}
               />
             </div>
 
@@ -186,3 +188,4 @@ export default class Cases extends Component {
     }
   }
 }
+

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
+import Logo from '../images/Medical-Logo.png';
+import './navbar.css'
 
 
 export default class NavBar extends Component {
@@ -9,8 +11,8 @@ export default class NavBar extends Component {
     this.state={ loggedInUser: null};
     this.service = new AuthService();
   }
-   willReceiveProps(elProp){
-     this.setState({...this.state, loggedInUser: elProp["userInSession"] })
+   willReceiveProps(props){
+     this.setState({...this.state, loggedInUser: props["userInSession"] })
    }
 
    logOutHandler = (e) =>{
@@ -21,27 +23,40 @@ export default class NavBar extends Component {
        console.log(this.state.loggedInUser)
     return (
       <div>
-        <nav className="nav-style">
-          <ul>
+      <nav className="navbar navbar-expand">
+        <div className="container-fluid">
+          <div className="navbar-header">
+          <Link to="/" className="navbar-brand">
+              <img src={Logo} alt="vitality" />
+            </Link>
+          </div>
+          <ul className="nav navbar-nav navbar-right">
             <li><a onClick={this.logOutHandler}>LogOut Broski</a></li>
           </ul>
           <h1>Welcome, {this.state.loggedInUser.username}</h1>
-          <li><Link to='/logout'>LogOut Playa</Link></li>
-        </nav>
-      </div>
+            </div>
+            </nav>
+          </div>
+    
     )
   } else {
     return (
       <div>
-        <nav className="nav-style">
-          <ul>
+      <nav className="navbar navbar-expand">
+        <div className="container-fluid">
+          <div className="navbar-header">
+          <img src={Logo} alt="vitality" />
+          </div>
+          <Link to="/" className="navbar-brand" />
+          <ul className="nav navbar-nav navbar-right">
 
-            <li><Link to='/signup'>SignUp Playa</Link></li>
-            <li><Link to='/login'>Login Playa</Link></li>
+            <li><Link to='/signup'>SignUp</Link></li>
+            <li><Link to='/login'>Login</Link></li>
             <li><Link to='/cases'>Cases</Link></li>
             <li><Link to='/community'>Community</Link></li>
             
           </ul>
+        </div>
         </nav>
       </div>
     ) 

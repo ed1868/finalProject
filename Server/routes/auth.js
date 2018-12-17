@@ -63,10 +63,11 @@ router.post('/:id/edit', uploadCload.single('url'), (req, res, next) => {
 // ///////////////////SIGN UP ROUTE////////////////////////////
 router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
   const {
-    username, password, email, url,name, dob, medicalLicenseNumber, gender, experience,
+    username, password, email,name, dob, medicalLicenseNumber, gender, experience,
   } = req.body;
 
-
+  const url= req.file;
+  console.log(url);
   console.log(req.body);
   console.log('This is the username :', username);
   console.log('This is the password :', password);

@@ -1,11 +1,9 @@
 // import axios from 'axios';
 
 const express = require('express');
-
-
 const router = express.Router();
-
 const Case = require('../models/Case');
+const uploadCload = require('../config/cloudinary');
 
 
 // ///////////////////CASES ROUTE////////////////////////////
@@ -20,10 +18,12 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.post('/new', (req, res, next) => {
+router.post('/new',uploadCload.single('url'), (req, res, next) => {
   const {
-    title, description, imgName, url, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
+    title, description, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
   } = req.body;
+
+  const url =req.file.url;
   const author = req.user._id;
   const authorName = req.user.username
   
@@ -33,7 +33,6 @@ router.post('/new', (req, res, next) => {
   console.log('This is the case Author Id :', author);
   console.log('This is the case Author username :', authorName);
   console.log('This is the case description :', description);
-  console.log('This is the case Image Name :', imgName);
   console.log('This is the case Image url : ', url);
   console.log('This is the case symptoms : ', symptoms);
   console.log('This is the case timefram : ', timeframe);
@@ -49,7 +48,6 @@ router.post('/new', (req, res, next) => {
     author,
     authorName,
     description,
-    imgName,
     url,
     symptoms,
     timeframe,

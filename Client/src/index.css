@@ -12,3 +12,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbar{
+  margin-bottom: 1rem;
+}
+
+.navbar a{
+  font-weight: bold;
+}
+
+.navbar li:hover {
+  color:white;
+  text-decoration: underline;
+  cursor: crosshair;
+}
+
+.navbar-brand > img {
+  display: inline-block;
+  width: 20px;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+ul.nav.navbar-nav li {
+  margin: 0 0.5rem;
+}
