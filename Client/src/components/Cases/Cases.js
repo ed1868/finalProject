@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom"
 import axios from "axios";
+import './cases.css'
 
 const casesApi = axios.create({
   baseURL: "http://localhost:5000/cases"
@@ -28,22 +29,27 @@ export default class Cases extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Patient Cases</h2>
+      <div id="casePage">
+        <h2 id="patientHeader">Patient Cases</h2> 
+        <br></br>
+        <Link id="link" to="/cases/new" ><ion-icon size="large" name="add-circle-outline"></ion-icon></Link>
+        
         {this.state.cases !== null &&
           this.state.cases.map(cases => {
             return (
-              <div style={{border :"3px solid red"}}>
-                <div />
-                <div>
+  
+              <div className="row" id="casesEach">
+                <div className="col-md-12">
+                <br></br>
                   <h1>
-                    Title : <Link to={`cases/${cases._id}`}>{cases.title} </Link>
+                    <Link to={`cases/${cases._id}`}>{cases.title} </Link>
                   </h1>
                   <h2>
-                    Urgency Level : <span>{cases.urgencyLevel}</span>
+                    Urgency Level : <span id="red">{cases.urgencyLevel}</span>
                   </h2>
+                  <hr></hr>
                 </div>
-                <div>
+                {/* <div>
                   <img src={cases.url} />
                 </div>
                 <div>
@@ -78,10 +84,12 @@ export default class Cases extends Component {
                 <div>
                   <p>{cases.description}</p>
                   <quote>{cases.author}</quote>
-                </div>
+                </div> */}
               </div>
+ 
             );
           })}
+           
       </div>
     );
   }

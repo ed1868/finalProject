@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/AuthService';
-import Logo from '../images/Medical-Logo.png';
+import Logo from '../images/pulse-heartbeat-rate-heart-love-medical-2-58385.png';
 import './navbar.css'
 
 
@@ -45,9 +45,10 @@ export default class NavBar extends Component {
       <nav className="navbar navbar-expand">
         <div className="container-fluid">
           <div className="navbar-header">
-          <img src={Logo} alt="vitality" />
+          <Link to="/" className="navbar-brand" >
+          <img id="logo" src={Logo} alt="vitality" />
+          </Link>
           </div>
-          <Link to="/" className="navbar-brand" />
           <ul className="nav navbar-nav navbar-right">
 
             <li><Link to='/signup'>SignUp</Link></li>

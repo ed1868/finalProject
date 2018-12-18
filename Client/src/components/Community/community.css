@@ -1,0 +1,9 @@
+#tweetPic {
+  height:100px;
+  width:100px;
+  border-radius: 50%;
+}
+
+#tweetHeader {
+  font-size: 80px;
+}

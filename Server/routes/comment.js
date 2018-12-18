@@ -14,18 +14,21 @@ router.post('/new', (req, res, next) => {
     text, title,
   } = req.body;
   const author = req.user._id;
+  const authorUsername = req.user.username;
 
   console.log('This is the comment title :', title);
   console.log('This is the comment Author Id :', author);
+  console.log('This is the comments Author Username : ', authorUsername);
   console.log('This is the comment text :', text);
 
 
   const newComment = new Comment({
     title,
     author,
+    authorUsername,
     text,
   });
-
+console.log(newComment);
   newComment.save()
     .then(savedComment => res.status(200).json(savedComment))
     .catch(err => res.status(500).json({ message: 'Something went wrong' }));

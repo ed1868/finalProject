@@ -1,0 +1,24 @@
+/* #casesEach {
+  border-top: 1px solid black;
+  
+} */
+
+#patientHeader{
+  font-size: 80px;
+}
+hr {
+  background-color:black;
+  width: 50%;
+}
+
+#red{
+  color:red;
+}
+
+#casePage {
+  background-image: url();
+  background-position: center center;
+  background-size: cover;
+
+  
+}

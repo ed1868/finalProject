@@ -9,11 +9,57 @@
   align-items: center;
   justify-content: center;
   z-index: -1;
-  background-image: url("../images/homePageDoctors.png");
+  background-image: url("../images/homepageLogo.png");
   text-align: center;
   padding: 1rem;
   background-position: center center;
   background-size: cover;
   color: #fff;
   text-shadow: 0 0 8px #66757f;
+  background-position-y: 40px; 
+}
+
+.title {
+  font-size: 100px;
+  
+}
+
+#rows {
+  margin-top: 680px;
+}
+
+.componentImg {
+  height: 150px;
+  width: 150px;
+}
+
+h2{
+  padding-top:30px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+
+#footer {
+  background-color:rgba(5, 41, 45, 0.31);
+}
+
+.rowComponent{
+  /* text-align: left; */
+
+}
+
+.rowComponent li  {
+  list-style: none;
+  text-align:  left;
+  margin-right: 200px;
+}
+
+.rowComponent a{
+  color:black;  
+}
+
+#twitter{
+  height: 40px;
+  width: 100px;
 }

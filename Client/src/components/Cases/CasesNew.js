@@ -103,86 +103,112 @@ export default class Cases extends Component {
     } else {
       return (
         <div>
-          <form onSubmit={this.handleFormSubmit}>
-            <label>Case Title : </label>
-            <input
-              // value={this.state.title}
-              type="text"
-              name="title"
-              onChange={e => this.handleChange(e)}
-            />
-            <br />
-            <label>Urgency Level : </label>
-            <input type="number" value={this.state.urgencyLevel}name="urgencyLevel" onChange={e => this.handleChange(e)}/>
-            <br />
-            <br />
-            <label>Symptoms : </label>
-            <br />
-            <input 
-              type="text"
-              name="symptoms"
-              // value="symptoms"
-              onChange={e => this.handleChange(e)}
-              />
-            <br />
-            <label>Time Frame Of Symptoms : </label>
-            <br />
-            <input
-              type="text"
-              name="timeframe"
-              // value={this.state.timeframe}
-              onChange={e => this.handleChange(e)}
-            />
-            <br />
-            <div>
-              <label>Vital Signs : </label>
-            </div>
-            <br />
-            <div>
-              <label>Systolic : </label>
-              <input type="number" name="systolic" onChange={e => this.handleChange(e)}/>
-            </div>
-            <div>
-              <label>Diastolic : </label>
-              <input type="number" name="diastolic"  onChange={e => this.handleChange(e)}/>
-            </div>
-            <div>
-              <label>Oxygen : </label>
-              <input type="number" name="oxygen"  onChange={e => this.handleChange(e)}/>
-            </div>
-            <div>
-              <br />
-              <label>Image : </label>
-              <input
+          <h1>Add a Case</h1>
+        <div className="row justify-content-md-center text-center">
+          <div className="col-md-6">
+        <form onSubmit={this.handleFormSubmit}>
+
+        <label htmlFor="title">Case Title : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="title"
+                  name="title"
+                  onChange={e => this.handleChange(e)}
+                  type="text"
+                />
+                
+                <label htmlFor="urgencyLevel">Urgency Level : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="urgencyLevel"
+                  name="urgencyLevel"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+                <label htmlFor="symptoms">Symptoms : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="symptoms"
+                  name="symptoms"
+                  onChange={e => this.handleChange(e)}
+                  type="text"
+                />
+                <label htmlFor="timeframe">Time Frame Of Symptoms : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="timeframe"
+                  name="timeframe"
+                  onChange={e => this.handleChange(e)}
+                  type="text"
+                />
+                <h3>Vital Signs</h3>
+                <br></br>
+                <label htmlFor="systolic">Systolic : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="systolic"
+                  name="systolic"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+                <label htmlFor="diastolic">Diastolic : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="diastolic"
+                  name="diastolic"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+
+                <label htmlFor="oxygen">Oxygen : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="oxygen"
+                  name="oxygen"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+
+                <label htmlFor="gender">Image : </label>
+                <br></br>
+                <input
                 type="file"
                 name="url"
                 onChange={e => this.handleChange(e)}
               />
-            </div>
-            <br />
-            <div>
-              <label>Rate Of Pain : </label>
-              <input
-                type="number"
-                name="rateOfPain"
-                
-                onChange={e => this.handleChange(e)}
-              />
-            </div>
-            <br />
-            <div>
-              <label>Description : </label>
-
-              <textarea
-                name="description"
-               
-                placeholder="41 Year Old Male w/ has Suffered Blunt Force Trauma To frontal lobe"
-                onChange={e => this.handleChange(e)}
-              />
-            </div>
-
-            <input type="submit" value="Cases" />
-          </form>
+                <br></br>
+                <label htmlFor="rateOfPain">Rate Of Pain : </label>
+                <input
+                  autoComplete="off"
+                  className="form-control"
+                  id="rateOfPain"
+                  name="rateOfPain"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+                <br></br>
+                <label htmlFor="description">Description : </label>
+                <textarea
+                  autoComplete="off"
+                  className="form-control"
+                  id="description"
+                  name="description"
+                  placeholder="41 Year Old Male w/ has Suffered Blunt Force Trauma To frontal lobe"
+                  onChange={e => this.handleChange(e)}
+                  type="number"
+                />
+          
+          <input type="submit" value="Cases" />
+        </form>
+        </div>
+        </div>
         </div>
       );
     }

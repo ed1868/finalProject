@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Homepage from "../Homepage/Homepage";
 
 const Main = props => {
-  const { authUser } = props;
+  console.log(props)
   return (
     <div className="container">
       <Switch>

@@ -14,7 +14,7 @@ const bodyParser   = require('body-parser'),
       flash      = require('connect-flash'),
       cors       = require('cors');
       
-  //  const { loginRequired, ensureCorrectUser } = require('./middleware/auth');
+
 
 
 mongoose
@@ -92,7 +92,7 @@ const messageRoutes = require('./routes/messages');
 // app.use('/community', loginRequired,ensureCorrectUser, messageRoutes);
 
 app.use(
-  '/community/:id/messages',
+  '/community',
   messageRoutes
 );
 

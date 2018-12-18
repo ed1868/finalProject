@@ -88,7 +88,7 @@ export default class Signup extends Component {
       <div>
        
         <div className="row justify-content-md-center text-center">
-          <div className="col-md-6">
+          <div className="col-md-4">
         <form onSubmit={this.handleFormSubmit}>
         <h2>Become Part of The [vital]ity Community ! </h2>
         <label htmlFor="username">Username : </label>
@@ -100,7 +100,7 @@ export default class Signup extends Component {
                   onChange={e => this.handleChange(e)}
                   type="text"
                 />
-
+                
                 <label htmlFor="email">Email : </label>
                 <input
                   autoComplete="off"
@@ -172,12 +172,7 @@ export default class Signup extends Component {
                 />
                 <br></br>
           
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-block btn-lg"
-                >
-                  Sign Me Up
-                </button>
+          <input type="submit" value="Signup" />
         </form>
         </div>
         </div>

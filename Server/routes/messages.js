@@ -11,23 +11,50 @@ const {
 
 /// -/community where it shows all messages from users 
 
-router.get("/community", async function(req, res, next) {
-  try {
-    let messages = await Message.find()
+router.get('/', (req, res, next) => {
+  
+    Message.find()
       .sort({ createdAt: "desc" })
       .populate("user", {
         username: true,
         url: true
-      });
-    return res.status(200).json(messages);
-  } catch (err) {
-    return next(err);
-  }
+      }).then(messages=> {
+        console.log(messages);
+        return res.status(200).json({messages});
+      }).catch((err) =>{
+          return res.status(500).json({message : err});
+      })
 });
 
-//  - /community/:id/messages
-router.route("/").post(createMessage);
+//  - /community/messages/new
+// router.route("/messages/new").post(createMessage);
 
+router.post('/messages/new', (req, res, next) => {
+   console.log(req.body);
+  const {
+    title, text, 
+  } = req.body;
+
+  const author = req.user._id;
+  const authorName = req.user.username
+  
+
+
+  console.log('This is the Status title :', title);
+  console.log('This is the Status text  :', text);
+  console.log('This is the Status Author ID :', author);
+  console.log('This is the Status Author username :', authorName);
+
+  const newMessage = new Message({
+    title,
+    text,
+    user:req.user._id
+  });
+
+  newMessage.save()
+    .then(savedMessage => res.status(200).json(savedMessage))
+    .catch(err => res.status(500).json({ message: 'Something went wrong' }));
+});
 
 // GET - /community/:id/messages/:message_id
 exports.getMessage = async function(req, res, next) {
@@ -43,7 +70,7 @@ exports.getMessage = async function(req, res, next) {
 
 exports.deleteMessage = async function(req, res, next) {
   try {
-    let foundMessage = await Message.findById(req.params.message_id);
+    let foundMessage = await db.Message.findById(req.params.message_id);
     await foundMessage.remove();
 
     return res.status(200).json(foundMessage);
@@ -52,9 +79,9 @@ exports.deleteMessage = async function(req, res, next) {
   }
 };
 //  - /community/:id/messages/:message_id
-router
-  .route("/:message_id")
-  // .get(getMessage)
-  // .delete(deleteMessage);
+// router
+//   .route("/:message_id")
+//   .get(getMessage)
+//   // .delete(deleteMessage);
 
 module.exports = router;

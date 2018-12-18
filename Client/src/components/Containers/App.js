@@ -6,12 +6,15 @@ import Signup from "../auth/SignUp";
 import Login from "../auth/Login";
 import Cases from "../Cases/Cases";
 import CasesNew from "../Cases/CasesNew";
+// import Case from "../Cases/Case";
 import { Provider } from "react-redux";
 import { configureStore } from "../Store";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import Community from "../Community/Community";
+import CommunityMessages from "../Community/CommunityMessages";
 import Main from "../Containers/Main";
+import AddMessage from "../Community/AddMessage";
+import UserProfile from "../auth/UserProfile";
 
 const store = configureStore();
 
@@ -67,11 +70,17 @@ class App extends Component {
                 render={() => <Login getUser={this.getUser} />}
               />
               <Route exact path="/logout" component={this.getUser} />
+
               <Route
                 exact
                 path="/cases"
                 render={() => <Cases getUser={this.getUser} />}
               />
+              {/* <Route
+                exact
+                path="/cases/:id"
+                render={() => <Case getUser={this.getUser} />}
+              /> */}
               <Route
                 exact
                 path="/cases/new"
@@ -80,12 +89,19 @@ class App extends Component {
               <Route
                 exact
                 path="/community"
-                render={() => <Community getUser={this.getUser} />}
+                render={() => <CommunityMessages getUser={this.getUser} />}
               />
-              {/* <Route exact path="/cases/:id" component={}/> 
-        <Route exact path="/community" component={} />
-              
-        <Route exact path="/user-profile" component={} /> */}
+              <Route
+                exact
+                path="/community/messages/new"
+                render={() => <AddMessage getUser={this.getUser} />}
+              />
+              <Route
+                exact
+                path="/:id/user-profile"
+                render={() => <UserProfile getUser={this.getUser} />}
+              />
+          
             </Switch>
           </div>
         </Router>

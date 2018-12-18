@@ -17,6 +17,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
+////////////////////////NEW CASE ROUTE/////////////////////////
 
 router.post('/new',uploadCload.single('url'), (req, res, next) => {
   const {
@@ -62,7 +63,17 @@ router.post('/new',uploadCload.single('url'), (req, res, next) => {
     .then(savedCase => res.status(200).json(savedCase))
     .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 });
+////////////////////////////SPECIFIC CASE ROUTE /////////////////////////
 
+router.get('/:id',(req,res,next) => {
+  Case.findById({_id:req.params.id},(err,foundCase) => {
+    if(foundCase == null){
+      return res.json({ message : 'No Case With That Id'})
+    }
+    return res.json({foundCase});
+
+  })
+})
 // // /////////////////////CASES EDIT ROUTE////////////////////////
 router.post('/:id/edit', (req, res, next) => {
   const {

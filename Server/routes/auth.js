@@ -66,7 +66,7 @@ router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
     username, password, email,name, dob, medicalLicenseNumber, gender, experience,
   } = req.body;
 
-  const url= req.file;
+  const url= req.file.url;
   console.log(url);
   console.log(req.body);
   console.log('This is the username :', username);

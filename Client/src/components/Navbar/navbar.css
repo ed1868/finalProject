@@ -1,5 +1,6 @@
 .navbar{
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
+  background-color: white;
 }
 
 .navbar a{
@@ -12,10 +13,10 @@
   cursor: crosshair;
 }
 
-.navbar-header> img {
+.navbar-header {
   display: inline-block;
-  width: 90px;
-  height:80px;
+  width: 40px;
+  height:40px;
   margin-bottom: 2px;
   margin-right: 5px;
   border-radius: 2px;
@@ -23,4 +24,11 @@
 
 ul.nav.navbar-nav li {
   margin: 0 0.5rem;
+}
+
+#logo{
+  display: inline-block;
+  height:40px;
+  width: 50px;
+  border-radius: 2px;
 }

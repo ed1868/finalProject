@@ -4,8 +4,10 @@ const Message = require('../models/Message');
 exports.createMessage = async function (req, res, next) {
   try {
     const message = await Message.create({
+      title: req.body.title,
       text: req.body.text,
-      user: req.params.id,
+      author: req.params.id,
+      authorName: req.user.username
     });
     const foundUser = await User.findById(req.params.id);
     foundUser.messages.push(message.id);
