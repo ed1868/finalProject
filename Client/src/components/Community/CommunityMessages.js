@@ -8,7 +8,7 @@ import "./community.css";
 import Pulse from "../images/messagePulse.png";
 
 const messagesApi = axios.create({
-  baseURL: "http://localhost:5000/community"
+  baseURL: `${process.env.REACT_APP_API_URL}/community`
 });
 
 export default class Messages extends Component {
@@ -60,6 +60,7 @@ export default class Messages extends Component {
                           <ion-icon size="large" name="finger-print" /> @
                           {username} &nbsp;
                         </Link>
+
                         <h3>{messages.title}</h3>
                         <p>
                            <span>{messages.text} </span>

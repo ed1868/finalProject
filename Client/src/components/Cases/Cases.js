@@ -4,7 +4,8 @@ import axios from "axios";
 import './cases.css'
 
 const casesApi = axios.create({
-  baseURL: "http://localhost:5000/cases"
+  baseURL: `${process.env.REACT_APP_API_URL}/cases`,
+  withCredentials: true
 });
 
 export default class Cases extends Component {

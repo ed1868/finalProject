@@ -1,43 +1,41 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router({ mergeParams: true });
 const Message = require('../models/Message');
 
 const {
   createMessage,
   getMessage,
-  deleteMessage
-} = require("../handlers/messages");
+  deleteMessage,
+} = require('../handlers/messages');
 
 
-/// -/community where it shows all messages from users 
+// / -/community where it shows all messages from users
 
 router.get('/', (req, res, next) => {
-  
-    Message.find()
-      .sort({ createdAt: "desc" })
-      .populate("user", {
-        username: true,
-        url: true
-      }).then(messages=> {
-        console.log(messages);
-        return res.status(200).json({messages});
-      }).catch((err) =>{
-          return res.status(500).json({message : err});
-      })
+  Message.find()
+    .sort({ createdAt: 'desc' })
+    .populate('user', {
+      username: true,
+      url: true,
+    }).then((messages) => {
+      console.log(messages);
+      return res.status(200).json({ messages });
+    })
+    .catch(err => res.status(500).json({ message : err }));
 });
 
 //  - /community/messages/new
 // router.route("/messages/new").post(createMessage);
 
 router.post('/messages/new', (req, res, next) => {
-   console.log(req.body);
+  console.log(req.body);
   const {
-    title, text, 
+    title, text,
   } = req.body;
 
   const author = req.user._id;
-  const authorName = req.user.username
-  
+  const authorName = req.user.username;
 
 
   console.log('This is the Status title :', title);
@@ -48,7 +46,7 @@ router.post('/messages/new', (req, res, next) => {
   const newMessage = new Message({
     title,
     text,
-    user:req.user._id
+    user:req.user._id,
   });
 
   newMessage.save()
@@ -57,9 +55,9 @@ router.post('/messages/new', (req, res, next) => {
 });
 
 // GET - /community/:id/messages/:message_id
-exports.getMessage = async function(req, res, next) {
+exports.getMessage = async function (req, res, next) {
   try {
-    let message = await Message.find(req.params.message_id);
+    const message = await Message.find(req.params.message_id);
     return res.status(200).json(message);
   } catch (err) {
     return next(err);
@@ -68,9 +66,9 @@ exports.getMessage = async function(req, res, next) {
 
 // DELETE /community/:id/messages/:message_id
 
-exports.deleteMessage = async function(req, res, next) {
+exports.deleteMessage = async function (req, res, next) {
   try {
-    let foundMessage = await db.Message.findById(req.params.message_id);
+    const foundMessage = await db.Message.findById(req.params.message_id);
     await foundMessage.remove();
 
     return res.status(200).json(foundMessage);

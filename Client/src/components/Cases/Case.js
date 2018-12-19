@@ -3,7 +3,8 @@ import {Link} from "react-router-dom"
 import axios from "axios";
 
 const casesApi = axios.get({
-  baseURL: "http://localhost:5000/cases/"
+  baseURL: `${process.env.REACT_APP_API_URL}/cases/`,
+  withCredentials: true
 });
 
 export default class Cases extends Component {

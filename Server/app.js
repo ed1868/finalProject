@@ -1,24 +1,40 @@
 require('dotenv').config();
 
-const bodyParser   = require('body-parser'),
-      cookieParser = require('cookie-parser'),
-      express      = require('express'),
-      favicon      = require('serve-favicon'),
+const bodyParser   = require('body-parser');
 
-      mongoose     = require('mongoose'),
-      logger       = require('morgan'),
-      path         = require('path'),
 
-      session    = require('express-session'),
-      MongoStore = require('connect-mongo')(session),
-      flash      = require('connect-flash'),
-      cors       = require('cors');
-      
+const cookieParser = require('cookie-parser');
 
+
+const express      = require('express');
+
+
+const favicon      = require('serve-favicon');
+
+
+const mongoose     = require('mongoose');
+
+
+const logger       = require('morgan');
+
+
+const path         = require('path');
+
+
+const session    = require('express-session');
+
+
+const MongoStore = require('connect-mongo')(session);
+
+
+const flash      = require('connect-flash');
+
+
+const cors       = require('cors');
 
 
 mongoose
-  .connect('mongodb://localhost/Server', { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI)
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
@@ -93,7 +109,7 @@ const messageRoutes = require('./routes/messages');
 
 app.use(
   '/community',
-  messageRoutes
+  messageRoutes,
 );
 
 app.use((req, res) => {
