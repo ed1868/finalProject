@@ -76,11 +76,11 @@ class App extends Component {
                 path="/cases"
                 render={() => <Cases getUser={this.getUser} />}
               />
-              {/* <Route
+              <Route
                 exact
                 path="/cases/:id"
-                render={() => <Case getUser={this.getUser} />}
-              /> */}
+                render={(props) => <Case getUser={this.getUser} {...props} />}
+              />
               <Route
                 exact
                 path="/cases/new"

@@ -1,6 +1,7 @@
 // import axios from 'axios';
 
 const express = require('express');
+
 const router = express.Router();
 const Case = require('../models/Case');
 const uploadCload = require('../config/cloudinary');
@@ -17,17 +18,16 @@ router.get('/', (req, res, next) => {
   });
 });
 
-////////////////////////NEW CASE ROUTE/////////////////////////
+// //////////////////////NEW CASE ROUTE/////////////////////////
 
-router.post('/new',uploadCload.single('url'), (req, res, next) => {
+router.post('/new', uploadCload.single('url'), (req, res, next) => {
   const {
     title, description, symptoms, timeframe, urgencyLevel, rateOfPain, systolic, diastolic, oxygen,
   } = req.body;
 
-  const url =req.file.url;
+  const url = req.file.url;
   const author = req.user._id;
-  const authorName = req.user.username
-  
+  const authorName = req.user.username;
 
 
   console.log('This is the case title :', title);
@@ -63,17 +63,16 @@ router.post('/new',uploadCload.single('url'), (req, res, next) => {
     .then(savedCase => res.status(200).json(savedCase))
     .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 });
-////////////////////////////SPECIFIC CASE ROUTE /////////////////////////
+// //////////////////////////SPECIFIC CASE ROUTE /////////////////////////
 
-router.get('/:id',(req,res,next) => {
-  Case.findById({_id:req.params.id},(err,foundCase) => {
-    if(foundCase == null){
-      return res.json({ message : 'No Case With That Id'})
+router.get('/:id', (req, res, next) => {
+  Case.findById({ _id:req.params.id }, (err, foundCase) => {
+    if (foundCase == null) {
+      return res.json({ message : 'No Case With That Id' });
     }
-    return res.json({foundCase});
-
-  })
-})
+    return res.json({ foundCase });
+  });
+});
 // // /////////////////////CASES EDIT ROUTE////////////////////////
 router.post('/:id/edit', (req, res, next) => {
   const {
