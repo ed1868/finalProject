@@ -6,12 +6,13 @@ import Signup from "../auth/SignUp";
 import Login from "../auth/Login";
 import Cases from "../Cases/Cases";
 import CasesNew from "../Cases/CasesNew";
-// import Case from "../Cases/Case";
+import Case from "../Cases/Case";
 import { Provider } from "react-redux";
 import { configureStore } from "../Store";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import CommunityMessages from "../Community/CommunityMessages";
+import CommentsNew from "../CommentNew/CommentNew";
 import Main from "../Containers/Main";
 import AddMessage from "../Community/AddMessage";
 import UserProfile from "../auth/UserProfile";
@@ -54,7 +55,7 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Switch>
-            <Route
+              <Route
                 exact
                 path="/"
                 render={() => <Main getUser={this.getUser} />}
@@ -79,13 +80,21 @@ class App extends Component {
               <Route
                 exact
                 path="/cases/:id"
-                render={(props) => <Case getUser={this.getUser} {...props} />}
+                render={props => <Case getUser={this.getUser} {...props} />}
               />
               <Route
                 exact
-                path="/cases/new"
+                path="/comments/:id"
+                render={props => (
+                  <CommentsNew getUser={this.getUser} {...props} />
+                )}
+              />
+              <Route
+                exact
+                path="/cases/add/new"
                 render={() => <CasesNew getUser={this.getUser} />}
               />
+
               <Route
                 exact
                 path="/community"
@@ -101,7 +110,6 @@ class App extends Component {
                 path="/:id/user-profile"
                 render={() => <UserProfile getUser={this.getUser} />}
               />
-          
             </Switch>
           </div>
         </Router>

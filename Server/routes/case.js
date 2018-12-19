@@ -66,6 +66,7 @@ router.post('/new', uploadCload.single('url'), (req, res, next) => {
 // //////////////////////////SPECIFIC CASE ROUTE /////////////////////////
 
 router.get('/:id', (req, res, next) => {
+  console.log('hola miami');
   Case.findById({ _id:req.params.id }, (err, foundCase) => {
     if (foundCase == null) {
       return res.json({ message : 'No Case With That Id' });

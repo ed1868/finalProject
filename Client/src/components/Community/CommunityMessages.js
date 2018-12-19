@@ -37,7 +37,7 @@ export default class Messages extends Component {
   render() {
     return (
       <div>
-        <h2 id="tweetHeader">Our Pulse </h2>
+        <h2 id="tweetHeader"><ion-icon id="pulseStart" name="pulse"></ion-icon> Our Pulse<ion-icon id="pulseEnd" name="pulse"></ion-icon> </h2>
         <Link to="/community/messages/new" >
         <ion-icon size="large" name="add-circle-outline"></ion-icon>
         </Link>

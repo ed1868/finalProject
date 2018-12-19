@@ -1,10 +1,19 @@
 import React, { Component } from "react";
+import Service from "../MedicalApi/lexigram"
 import "./Homepage.css";
 import ComponentOne from "../images/icon_sets_100_popular_requests_fill_iconfinder-80-512.png";
 import ComponentTwo from "../images/Stethoscope-512.png";
 import ComponentThree from "../images/medicalLogo.png";
 
 export default class Homepage extends Component {
+  constructor(){
+    super()
+    this.service = new Service()
+
+    this.service.search("diabetes").then((d)=>{
+      console.log(d);
+    })
+  }
   render() {
     return (
       <div>

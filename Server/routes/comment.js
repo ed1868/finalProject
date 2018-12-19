@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 
 const router = express.Router();
+const Case = require('../models/Case');
 
 const Comment = require('../models/Comment');
 
@@ -9,12 +10,14 @@ const Comment = require('../models/Comment');
 // ///////////////////COMMENT ROUTE////////////////////////////
 
 
-router.post('/new', (req, res, next) => {
+router.post('/:id', (req, res, next) => {
   const {
     text, title,
   } = req.body;
+
   const author = req.user._id;
   const authorUsername = req.user.username;
+
 
   console.log('This is the comment title :', title);
   console.log('This is the comment Author Id :', author);
@@ -28,9 +31,9 @@ router.post('/new', (req, res, next) => {
     authorUsername,
     text,
   });
-console.log(newComment);
+  console.log(newComment);
   newComment.save()
-    .then(savedComment => res.status(200).json(savedComment))
+    .then((newc) => { console.log(req.params.id);  Case.findByIdAndUpdate({ _id:req.params.id }, { $push: { comments:  newc._id  } }).then(() => res.status(200).json({ message:'saved' })); })
     .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 });
 

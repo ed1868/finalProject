@@ -3,15 +3,16 @@ import axios from "axios";
 class Lexigram {
   constructor() {
     this.service = axios.create({
-      baseURL: "https://api.lexigram.io/v1/extract/entities",
+      baseURL: "http://localhost:5000",
       withCredentials: true
     })
   }
 
   search = (query) => {
-    
-    return this.service.post('/, query){
-    .then(response => response.data)
+    return this.service.get('/auth/search/?q=diabetes&limit=20')
+    .then(response => {
+      console.log(response);
+    })
   }
 
 }

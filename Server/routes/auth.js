@@ -63,10 +63,10 @@ router.post('/:id/edit', uploadCload.single('url'), (req, res, next) => {
 // ///////////////////SIGN UP ROUTE////////////////////////////
 router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
   const {
-    username, password, email,name, dob, medicalLicenseNumber, gender, experience,
+    username, password, email, name, dob, medicalLicenseNumber, gender, experience,
   } = req.body;
 
-  const url= req.file.url;
+  const url = req.file.url;
   console.log(url);
   console.log(req.body);
   console.log('This is the username :', username);
@@ -90,7 +90,7 @@ router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-    
+
     const newUser = new User({
       username,
       password: hashPass,
@@ -117,16 +117,30 @@ router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
 
     })
 
-      .then((savedUser) => { 
-        console.log('----------------'); 
+      .then((savedUser) => {
+        console.log('----------------');
         console.log(savedUser._id);
-      
-        res.status(200).json(savedUser); 
-      }) .catch(err => {
-        console.log(err)
-        res.status(500).json({ message: 'Something went wrong', err })
-      });
 
+        res.status(200).json(savedUser);
+      }).catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: 'Something went wrong', err });
+      });
+  });
+});
+
+router.get('/search', (req, res) => {
+  const request = require('request');
+
+  const options = {
+    url: 'https://api.lexigram.io/v1/lexigraph/search/?limit=20&q=diabetes',
+    headers: {
+      Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdSI6Imx4ZzphcGkiLCJzYyI6WyJrZzpyZWFkIiwiZXh0cmFjdGlvbjpyZWFkIl0sImFpIjoiYXBpOjY2YjRlYjE3LTE0ZDctNjBmNy00Y2QyLTRmYzI4NGY5NTE2MyIsInVpIjoidXNlcjoyYTk1YTJjNS0zZDRlLTQxOWUtMjhhZi01ODNjMDZjMjA5YzUiLCJpYXQiOjE1NDQ0NTcxMTl9.Cn77llDtcDDnOfiYjQrjnJ8guCTpjkOfdkiiR-subqI',
+    },
+  };
+
+  request(options, (err, responsePayload, body) => {
+    res.json(responsePayload);
   });
 });
 

@@ -31,9 +31,9 @@ export default class Cases extends Component {
   render() {
     return (
       <div id="casePage">
-        <h2 id="patientHeader">Patient Cases</h2> 
+        <h2 id="patientHeader"><ion-icon id="pulseStart" name="pulse"></ion-icon> Patient Cases<ion-icon id="pulseEnd" name="pulse"></ion-icon> </h2> 
         <br></br>
-        <Link id="link" to="/cases/new" ><ion-icon size="large" name="add-circle-outline"></ion-icon></Link>
+        <Link id="link" to="/cases/add/new" ><ion-icon size="large" name="add-circle-outline"></ion-icon></Link>
         
         {this.state.cases !== null &&
           this.state.cases.map(cases => {
@@ -43,7 +43,7 @@ export default class Cases extends Component {
                 <div className="col-md-12">
                 <br></br>
                   <h1>
-                    <Link to={`cases/${cases._id}`}>{cases.title} </Link>
+                    <Link to={`cases/${cases._id}`}>{cases.title}</Link>
                   </h1>
                   <h2>
                     Urgency Level : <span id="red">{cases.urgencyLevel}</span>
