@@ -9,7 +9,7 @@ class Lexigram {
   }
 
   search = (query) => {
-    return this.service.get('/auth/search/?q=diabetes&limit=20')
+    return this.service.get(`/auth/search/?q=${query}&limit=20`)
     .then(response => {
       console.log(response);
     })

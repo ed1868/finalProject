@@ -1,27 +1,35 @@
 import React, { Component } from "react";
-import Service from "../MedicalApi/lexigram"
+import Service from "../MedicalApi/lexigram";
 import "./Homepage.css";
 import ComponentOne from "../images/icon_sets_100_popular_requests_fill_iconfinder-80-512.png";
 import ComponentTwo from "../images/Stethoscope-512.png";
 import ComponentThree from "../images/medicalLogo.png";
 
 export default class Homepage extends Component {
-  constructor(){
-    super()
-    this.service = new Service()
+  constructor() {
+    super();
+    this.state={
+      search:''
+    }
+    this.service = new Service();
 
-    this.service.search("diabetes").then((d)=>{
-      console.log(d);
-    })
+    this.service.search("diabetes").then(d => {});
+
   }
+  searchHandler(e){
+    console.log(e);
+  }
+
   render() {
     return (
       <div>
+
         <div className="home-hero">
           <h1 className="title">[VITAL]ITY</h1>
-          <h2>From Doctors , For Doctors</h2>
-        </div>
+          <h2 id="doctorQuote">From Doctors , For Doctors</h2>
 
+        </div>
+        <input id="search" type="text" placeholder="Quick Search.." onChange={e => this.searchHandler(e)} />
         <section id="rows">
           <div className="row">
             <div className="col-md-4 ">
@@ -41,7 +49,7 @@ export default class Homepage extends Component {
               <p>
                 Our wide variety of cases range from simple to rare. Every
                 person is different . Every Case is Unique{" "}
-                <ion-icon size="medium" name="pulse"></ion-icon>
+                <ion-icon size="medium" name="pulse" />
               </p>
             </div>
 
@@ -62,20 +70,27 @@ export default class Homepage extends Component {
             <div className="col-md-6 rowComponent">
               <h5>Contact Us</h5>
               <ul>
-                <li><a href="">Email Us</a></li>
-                <li><a href="">Subscribe To Mailing List</a></li>
-                <li><a href="">Support</a></li>
-                <li><a href="">Meet The Team</a></li>
+                <li>
+                  <a href="">Email Us</a>
+                </li>
+                <li>
+                  <a href="">Subscribe To Mailing List</a>
+                </li>
+                <li>
+                  <a href="">Support</a>
+                </li>
+                <li>
+                  <a href="">Meet The Team</a>
+                </li>
               </ul>
             </div>
 
             <div className="col-md-6 rowComponent">
-
-            <h5>Follow Us</h5>
-            <ion-icon size="large" name="logo-instagram"></ion-icon>
-            <ion-icon size="large" name="logo-facebook"></ion-icon>
-            <ion-icon size="large" name="logo-linkedin"></ion-icon>
-            <ion-icon size="large" name="logo-github"></ion-icon>
+              <h5>Follow Us</h5>
+              <ion-icon size="large" name="logo-instagram" />
+              <ion-icon size="large" name="logo-facebook" />
+              <ion-icon size="large" name="logo-linkedin" />
+              <ion-icon size="large" name="logo-github" />
             </div>
 
             {/* <div className="col-md-3 rowComponent">

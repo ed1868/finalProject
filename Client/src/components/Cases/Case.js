@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import './Case.css'
 
 
 
@@ -40,6 +41,20 @@ export default class Case extends Component {
       });
   }
 
+    showComments = () =>{
+   return this.state.foundCase.comments.map(comments => {
+      return (
+        <div>
+          <h2>{comments.title}</h2>
+          <p>{comments.text}</p>
+          <p>{comments.authorUsername}</p>
+          <button className="btn btn-danger">Delete</button>
+          <hr></hr>
+        </div>
+  
+      )
+  })
+}
   showDiv = () =>{
     return (
       <React.Fragment>
@@ -90,21 +105,33 @@ export default class Case extends Component {
       <div>
         <h2>Comments: </h2>
         <Link to={`/comments/${this.state.foundCase._id}`}> <ion-icon size="large" name="add-circle-outline"></ion-icon> </Link>
-        <p>{this.state.foundCase.comments}</p>
+        <hr></hr>
+        <p>{this.showComments()}</p>
       </div>
     </div>
       </React.Fragment>
       
     )
   }
+  
+
+  
 
   render() {
 
     return (
       <div>
-        <Link to="/cases" className="btn btn-warning">
+        <div className="caseMainDiv">
+        <Link to="/cases" id="allCases" className="btn btn-primary">
           All Cases
         </Link>
+    
+        <Link to="/cases" id="deleteCase" className="btn btn-danger">
+          Delete Case
+        </Link>
+
+
+        </div>
         {
           this.state.foundCase !== null && this.showDiv()
         }

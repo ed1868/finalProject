@@ -1,14 +1,17 @@
 .navbar{
   /* margin-bottom: 1rem; */
-  background-color: white;
+  background-color:#666666;
+
 }
 
 .navbar a{
   font-weight: bold;
+  color:white;
 }
 
 .navbar a:hover {
-  color:purple;
+  /* color:purple; */
+  color:#000000;
   text-decoration: underline;
   cursor: crosshair;
 }
