@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
     if (cases == null) {
       return res.json({ message: 'No Cases Up in Here' });
     }
-    return res.json({ cases });
+    return res.status(200).json({ cases });
   });
 });
 
