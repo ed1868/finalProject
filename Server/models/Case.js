@@ -19,11 +19,11 @@ const caseSchema = new Schema(
     },
     comments: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment',
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'Comment',
         title: String,
         text: String,
-        authorName:String,
+        authorUsername:String,
       },
     ],
     imgName: String,

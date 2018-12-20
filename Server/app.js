@@ -9,9 +9,6 @@ const cookieParser = require('cookie-parser');
 const express      = require('express');
 
 
-const favicon      = require('serve-favicon');
-
-
 const mongoose     = require('mongoose');
 
 
@@ -63,7 +60,6 @@ app.use(require('node-sass-middleware')({
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local

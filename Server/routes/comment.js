@@ -33,7 +33,7 @@ router.post('/:id', (req, res, next) => {
   });
   console.log(newComment);
   newComment.save()
-    .then((newc) => { console.log(req.params.id);  Case.findByIdAndUpdate({ _id:req.params.id }, { $push: { comments:  newc._id, newc.authorUsername, newc.title, newc.text  } }).then(() => res.status(200).json({ message:'saved' })); })
+    .then((newc) => { console.log(req.params.id);  Case.findByIdAndUpdate({ _id:req.params.id }, { $push: { comments:  newc } }).then(() => res.status(200).json({ message:'saved' })); })
     .catch(err => res.status(500).json({ message: 'Something went wrong' }));
 });
 
