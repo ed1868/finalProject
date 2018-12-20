@@ -21,6 +21,9 @@ const caseSchema = new Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment',
+        title: String,
+        text: String,
+        authorName:String,
       },
     ],
     imgName: String,
