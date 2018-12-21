@@ -10,6 +10,7 @@ export default class AddMessage extends Component {
     this.state = {
       title:"",
       text:"",
+      redirect: false,
     };
 
     this.messageService = new messageService();
@@ -34,6 +35,7 @@ export default class AddMessage extends Component {
         this.setState({
           title: "",
           text: "",
+          redirect:true,
         });
       });
   };
@@ -50,7 +52,7 @@ export default class AddMessage extends Component {
 
   render() {
     if (this.state && this.state.redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/community" />;
     }
 
     return (

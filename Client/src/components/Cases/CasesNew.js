@@ -25,7 +25,7 @@ export default class Cases extends Component {
       diastolic: "",
       oxygen: "",
       redirect: false,
-      selectedOption: null
+
     };
     this.CaseService = new CaseService();
   }
@@ -77,7 +77,7 @@ export default class Cases extends Component {
         systolic: "",
         diastolic: "",
         oxygen: "",
-        redirect: false,
+        redirect: true,
       });
     });
 };
@@ -99,7 +99,7 @@ export default class Cases extends Component {
 
   render() {
     if (this.state && this.state.redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/cases" />;
     } else {
       return (
         <div>

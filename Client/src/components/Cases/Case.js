@@ -45,9 +45,9 @@ export default class Case extends Component {
    return this.state.foundCase.comments.map(comments => {
       return (
         <div>
-          <h2>{comments.title}</h2>
+          <h4>{comments.title}</h4>
           <p>{comments.text}</p>
-          <p>{comments.authorUsername}</p>
+          <blockquote id="tweetComment">@{comments.authorUsername}</blockquote>
           <button className="btn btn-danger">Delete</button>
           <hr></hr>
         </div>
@@ -58,31 +58,31 @@ export default class Case extends Component {
   showDiv = () =>{
     return (
       <React.Fragment>
-        <div style={{ border: "3px solid red" }}>
+        <div >
       <div />
-      <div>
-        <h1>Title : {this.state.foundCase.title}</h1>
-        <h2>
-          Urgency Level : <span>{this.state.foundCase.urgencyLevel}</span>
+      <div className="blue">
+      <br></br>
+        <h1>{this.state.foundCase.title}</h1> by  <quote id="tweet">@ {this.state.foundCase.authorName}</quote>
+        <h2 id="shape">
+          <strong>Urgency Level :</strong> <span>{this.state.foundCase.urgencyLevel}</span>
         </h2>
-      </div>
-      <div>
-        <img src={this.state.foundCase.url} />
-      </div>
-      <div>
-        <h3>
+        <h4 id="symptoms">
           Symptoms : <span>{this.state.foundCase.symptoms}</span>
-        </h3>
-      </div>
-      <div>
-        <h3>
+        </h4>
+        <h4 id="timeframe">
           TimeFrame : <span>{this.state.foundCase.timeframe}</span>
-        </h3>
+        </h4>
+        <h4 id="pain">Rate Of Pain 1 - 10 : {this.state.foundCase.rateOfPain}</h4>
       </div>
-      <div>
-        <div style={{ border: "1px solid black" }}>
-          <h2>Vital Signs</h2>
-          <ul>
+      <hr></hr>
+      <div className="red">
+        <img className="thumbnail"  src={this.state.foundCase.url} />
+      </div>
+
+      <div className="yellow">
+        <div>
+          <h3>Vital Signs</h3>
+          <ul id="list">
             <li>
               Systolic : <span>{this.state.foundCase.systolic}</span>
             </li>
@@ -95,14 +95,13 @@ export default class Case extends Component {
           </ul>
         </div>
       </div>
-      <div>
-        <h2>Rate Of Pain 1 - 10 : {this.state.foundCase.rateOfPain}</h2>
+
+      <div className="description">
+        <p><strong>{this.state.foundCase.description}</strong></p>
+       
       </div>
-      <div>
-        <p>{this.state.foundCase.description}</p>
-        <quote>{this.state.foundCase.authorName}</quote>
-      </div>
-      <div>
+      <br></br>
+      <div className="comments"> 
         <h2>Comments: </h2>
         <Link to={`/comments/${this.state.foundCase._id}`}> <ion-icon size="large" name="add-circle-outline"></ion-icon> </Link>
         <hr></hr>
@@ -121,14 +120,15 @@ export default class Case extends Component {
 
     return (
       <div>
-        <div className="caseMainDiv">
-        <Link to="/cases" id="allCases" className="btn btn-primary">
+        <div>
+        {/* <Link to="/cases" id="allCases" className="btn btn-primary">
           All Cases
         </Link>
-    
+     */}
         <Link to="/cases" id="deleteCase" className="btn btn-danger">
           Delete Case
         </Link>
+        <br></br>
 
 
         </div>

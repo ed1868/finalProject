@@ -9,9 +9,16 @@ class Lexigram {
   }
 
   search = (query) => {
-    return this.service.get(`/auth/search/?q=${query}&limit=20`)
+    let a = query.query.query;
+    console.log(query);
+    console.log(a);
+    return this.service.get(`/auth/search/${a}`)
     .then(response => {
-      console.log(response);
+      let payload= JSON.parse(response.data.body);
+      let cleanPayload= payload.conceptSearchHits;
+      return cleanPayload.map(concept => {
+        return concept.concept.label;
+      })
     })
   }
 

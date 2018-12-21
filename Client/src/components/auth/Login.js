@@ -59,9 +59,10 @@ export default class Login extends Component {
                   onChange={e => this.handleChange(e)}
                   type="password"
                 />
+                <br></br>
                 <button
                   type="submit"
-                  className="btn btn-primary btn-block btn-lg"
+                  className="btn btn-dark btn-block btn-lg"
                 >
                   Login
                 </button>
@@ -77,13 +78,3 @@ export default class Login extends Component {
 }
 
 
-            {/* <h2>Login</h2>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username</label>
-          <input type="text" name="username" onChange={e => this.handleChange(e)} />
-
-          <label>Password</label>
-          <input type="password" name="password" onChange={e => this.handleChange(e)} />
-
-          <input type="submit" value="Login"/>
-        </form> */}

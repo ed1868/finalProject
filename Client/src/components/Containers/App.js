@@ -53,7 +53,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+            <Navbar fetchUser={this.fetchUser} userInSession={this.state.user}/>
             <Switch>
               <Route
                 exact
@@ -65,6 +65,7 @@ class App extends Component {
                 path="/signup"
                 render={() => <Signup getUser={this.getUser} />}
               />
+              
               <Route
                 exact
                 path="/login"

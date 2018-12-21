@@ -1,5 +1,80 @@
-.caseMainDiv{
-  display: flex;
-  justify-content: space-around;
-  align-items: center
+.red{
+
+  padding-bottom:5px;
+  width:40%;
+  float: left;
+  clear:right;  
+
+}
+
+.yellow{
+
+  padding-bottom:5px;
+  width:50%;
+  float: right;
+  clear: right;  
+  height:206px;
+  
+}
+#list{
+  list-style: none;
+  text-align: center;
+}
+.pink{
+
+  padding-bottom:5px;
+}
+.blue{
+  padding-bottom:5px;
+
+  
+}
+.green{
+  padding-bottom:5px;
+
+ 
+}
+
+.purple{
+  padding-bottom:5px;
+
+}
+
+.thumbnail{
+  height:200px;
+  width:300px;
+
+}
+#shape{
+ text-align: right;
+
+
+}
+#tweet{
+  color: #29a3ef;
+}
+#tweetComment{
+  color: #29a3ef;
+}
+#symptoms{
+  text-align: left; 
+}
+
+#timeframe{
+  text-align: left;
+}
+#pain{
+  text-align: left;
+}
+.description{
+  margin-top:230px;
+
+}
+.comments{
+  margin-top: 10px; 
+
+}
+hr{
+  
+  width:600px;
 }

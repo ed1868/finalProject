@@ -8,17 +8,54 @@ import ComponentThree from "../images/medicalLogo.png";
 export default class Homepage extends Component {
   constructor() {
     super();
-    this.state={
-      search:''
-    }
+    this.state = {
+      query: "",
+      queryResult: null
+    };
     this.service = new Service();
 
-    this.service.search("diabetes").then(d => {});
+    
+  }
+  handleFormSubmit = e => {
+    e.preventDefault();
 
-  }
-  searchHandler(e){
-    console.log(e);
-  }
+    const query = this.state;
+
+    console.log(this.state);
+    console.log(query);
+
+    this.service
+      .search({
+        query
+      })
+      .then(resultPayload => {
+        console.log(resultPayload);
+        this.setState({
+          query: "",
+          queryResult: resultPayload
+        });
+      });
+  };
+
+  handleChange = e => {
+    const { name, value } = e.target;
+
+    if (name === "url") {
+      this.setState({ ...this.state, url: e.target.files[0] });
+    } else {
+      this.setState({ ...this.state, [name]: value });
+    }
+  };
+
+  queryResults = () => {
+    return this.state.queryResult.map(label => {
+      return (
+ 
+          <li className="listItem"><strong>{label}</strong></li>
+
+      );
+    });
+  };
 
   render() {
     return (
@@ -27,9 +64,21 @@ export default class Homepage extends Component {
         <div className="home-hero">
           <h1 className="title">[VITAL]ITY</h1>
           <h2 id="doctorQuote">From Doctors , For Doctors</h2>
-
+          <div id="queryList">
+          {this.state.queryResult !== null && this.queryResults()}
+          </div>
         </div>
-        <input id="search" type="text" placeholder="Quick Search.." onChange={e => this.searchHandler(e)} />
+        <form onSubmit={this.handleFormSubmit}>
+          <input
+            id="search"
+            type="text"
+            name="query"
+            placeholder="Quick Search.."
+            onChange={e => this.handleChange(e)}
+          />
+          <input style={{"display": "none"}} type="submit" value="searchQuery" />
+        </form>
+
         <section id="rows">
           <div className="row">
             <div className="col-md-4 ">
@@ -49,7 +98,7 @@ export default class Homepage extends Component {
               <p>
                 Our wide variety of cases range from simple to rare. Every
                 person is different . Every Case is Unique{" "}
-                <ion-icon size="medium" name="pulse" />
+                
               </p>
             </div>
 
@@ -65,32 +114,32 @@ export default class Homepage extends Component {
           </div>
         </section>
 
-        <section id="footer">
-          <div className="row">
-            <div className="col-md-6 rowComponent">
-              <h5>Contact Us</h5>
+          <hr id="hack"></hr>
+          <div id="footer" className="row">
+            <div id="hackTwo" className="col-md-6 rowComponent">
+              <h5 id="contactUs">Contact Us</h5>
               <ul>
                 <li>
-                  <a href="">Email Us</a>
+                  <a className="hackThree" href="">Email Us</a>
                 </li>
                 <li>
-                  <a href="">Subscribe To Mailing List</a>
+                  <a className="hackThree" href="">Subscribe</a>
                 </li>
                 <li>
-                  <a href="">Support</a>
+                  <a className="hackThree"  href="">Support</a>
                 </li>
                 <li>
-                  <a href="">Meet The Team</a>
+                  <a className="hackThree" href="">Meet The Team</a>
                 </li>
               </ul>
             </div>
 
             <div className="col-md-6 rowComponent">
               <h5>Follow Us</h5>
-              <ion-icon size="large" name="logo-instagram" />
-              <ion-icon size="large" name="logo-facebook" />
-              <ion-icon size="large" name="logo-linkedin" />
-              <ion-icon size="large" name="logo-github" />
+              <ion-icon className="icons" size="large" name="logo-instagram" />
+              <ion-icon className="icons" size="large" name="logo-facebook" />
+              <ion-icon className="icons" size="large" name="logo-linkedin" />
+              <ion-icon className="icons" size="large" name="logo-github" />
             </div>
 
             {/* <div className="col-md-3 rowComponent">
@@ -112,7 +161,7 @@ export default class Homepage extends Component {
               </p>
             </div> */}
           </div>
-        </section>
+
       </div>
     );
   }

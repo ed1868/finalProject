@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en" class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+    <link rel="stylesheet" href="./React App_files/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./React App_files/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link href="./React App_files/css" rel="stylesheet">
+  <script src="./React App_files/ionicons.yytg5gxf.js" type="module" crossorigin="true" data-resources-url="https://unpkg.com/ionicons@4.5.0/dist/ionicons/" data-namespace="ionicons"></script><style type="text/css">body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.navbar{
+  margin-bottom: 1rem;
+}
+
+.navbar a{
+  font-weight: bold;
+}
+
+.navbar li:hover {
+  color:white;
+  text-decoration: underline;
+  cursor: crosshair;
+}
+
+.navbar-brand > img {
+  display: inline-block;
+  width: 20px;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+ul.nav.navbar-nav li {
+  margin: 0 0.5rem;
+}</style><style type="text/css">.App {
+  text-align: center;
+}
+
+.App-logo {
+  -webkit-animation: App-logo-spin infinite 20s linear;
+          animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+</style><style type="text/css">/* #casesEach {
+  border-top: 1px solid black;
+  
+} */
+
+#patientHeader{
+  font-size: 80px;
+}
+hr {
+  background-color:black;
+  width: 50%;
+}
+
+#red{
+  color:red;
+}
+
+#casePage {
+  background-image: url();
+  background-position: center center;
+  background-size: cover;
+
+  
+}
+
+
+#pulseStart{
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+</style><style type="text/css">.caseMainDiv{
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}</style><style type="text/css">.navbar{
+  /* margin-bottom: 1rem; */
+  background-color:	#242424;
+
+}
+
+.navbar a{
+  font-weight: bold;
+  color:white;
+}
+
+.navbar a:hover {
+  /* color:purple; */
+  color:#000000;
+  text-decoration: underline;
+  cursor: crosshair;
+}
+
+.navbar-header {
+  display: inline-block;
+  width: 40px;
+  height:40px;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+ul.nav.navbar-nav li {
+  margin: 0 0.5rem;
+}
+
+#logo{
+  display: inline-block;
+  height:40px;
+  width: 50px;
+  border-radius: 2px;
+}</style><style type="text/css">#tweetPic {
+  height:100px;
+  width:100px;
+  border-radius: 50%;
+}
+
+#tweetHeader {
+  font-size: 80px;
+}
+
+#pulseStart{
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+
+</style><style type="text/css">.home-hero {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  z-index: -1;
+  background-image: url(/static/media/homeDoc.653125f5.png);
+  text-align: center;
+  padding: 7rem;
+  background-position: center center;
+  background-size: cover;
+  color: #fff;
+  text-shadow: 0 0 15px black;
+  background-position-y: 40px; 
+}
+
+.title {
+  font-size: 100px;
+
+  
+}
+
+#doctorQuote{
+
+
+}
+
+#rows {
+  margin-top: 680px;
+}
+
+.componentImg {
+  height: 150px;
+  width: 150px;
+}
+
+
+h2{
+  padding-top:30px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+h2:hover {
+  color:black;
+}
+#footer {
+  background-color:rgba(5, 41, 45, 0.31);
+  width: 100vw;
+  left:0;
+  margin-right:300px;  
+}
+
+.rowComponent{
+  /* text-align: left; */
+
+}
+
+.rowComponent li  {
+  list-style: none;
+  text-align:  left;
+  margin-right: 200px;
+}
+
+.rowComponent a{
+  color:black;  
+}
+
+#twitter{
+  height: 40px;
+  width: 100px;
+}
+
+  #search{
+    border-radius: 15px;
+    width:320px;
+    padding:5px;
+    position: absolute;
+    top:350px;
+    left:485px;
+    outline: none;
+    border:none;
+    
+    background-color: #8F8F8F;
+    opacity:1;
+
+  }
+
+  ::-webkit-input-placeholder { 
+    color: black;
+    opacity: 2; 
+  }
+
+  ::-ms-input-placeholder { 
+    color: black;
+    opacity: 2; 
+  }
+
+  ::placeholder { 
+    color: black;
+    opacity: 2; 
+  }
+
+  #queryList{
+    color:white;  
+    /* max-height: 200px;
+    overflow: scroll; */
+    margin-top:60px;
+  }
+
+  .listItem{
+    list-style: none;
+    color:white;
+    text-transform: uppercase; 
+    font-size:20px;
+  }</style><template></template></head>
+  <body data-gr-c-s-loaded="true" cz-shortcut-listen="true">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"><div class="App"><div><nav class="navbar navbar-expand"><div class="container-fluid"><div class="navbar-header"><a class="navbar-brand" href="http://localhost:3000/"><img id="logo" src="./React App_files/pulse-heartbeat-rate-heart-love-medical-2-58385.bfc1ad49.png" alt="vitality"></a></div><ul class="nav navbar-nav navbar-right"><li><a href="http://localhost:3000/signup">SignUp</a></li><li><a href="http://localhost:3000/login">Login</a></li><li><a href="http://localhost:3000/cases">Cases</a></li><li><a href="http://localhost:3000/community">Community</a></li></ul></div></nav></div><div class="container"><div><div class="home-hero"><h1 class="title">[VITAL]ITY</h1><h2 id="doctorQuote">From Doctors , For Doctors</h2><ul id="queryList"></ul></div><form><input id="search" type="text" name="query" placeholder="Quick Search.."><input type="submit" value="searchQuery" style="display: none;"></form><section id="rows"><div class="row"><div class="col-md-4 "><img class="componentImg" src="./React App_files/icon_sets_100_popular_requests_fill_iconfinder-80-512.ba0bc3af.png"><h2>About Us</h2><p>As Healthcare grows, Diseases grow simultaneously. Vitality specializes in common-to-rare cases with qualified opinions on cases which could save a life. Saving a life may just be <strong>One Click Away</strong> </p></div><div class="col-md-4 "><img class="componentImg" src="./React App_files/Stethoscope-512.fb9b601a.png"><h2>Cases</h2><p>Our wide variety of cases range from simple to rare. Every person is different . Every Case is Unique </p></div><div class="col-md-4 "><img class="componentImg" src="./React App_files/medicalLogo.063a08ba.png"><h2>Community</h2><p>Our community is made by <strong>Verified</strong> Physicians who are comitted to lending their knowledge and experience to save patients around the world.</p></div></div></section><section id="footer"><div class="row"><div class="col-md-6 rowComponent"><h5>Contact Us</h5><ul><li><a href="http://localhost:3000/">Email Us</a></li><li><a href="http://localhost:3000/">Subscribe To Mailing List</a></li><li><a href="http://localhost:3000/">Support</a></li><li><a href="http://localhost:3000/">Meet The Team</a></li></ul></div><div class="col-md-6 rowComponent"><h5>Follow Us</h5><ion-icon size="large" name="logo-instagram" role="img" class="icon-large hydrated" aria-label="logo instagram"></ion-icon><ion-icon size="large" name="logo-facebook" role="img" class="icon-large hydrated" aria-label="logo facebook"></ion-icon><ion-icon size="large" name="logo-linkedin" role="img" class="icon-large hydrated" aria-label="logo linkedin"></ion-icon><ion-icon size="large" name="logo-github" role="img" class="icon-large hydrated" aria-label="logo github"></ion-icon></div></div></section></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script src="./React App_files/ionicons.js"></script>
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/0.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.91251cce716d6715b34c.hot-update.js"></script>
+
+</body></html>

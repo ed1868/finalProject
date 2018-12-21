@@ -5,7 +5,7 @@ import UserAside from "./UserAside";
 import Moment from "react-moment";
 import "./community.css";
 
-import Pulse from "../images/messagePulse.png";
+
 
 const messagesApi = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}/community`
@@ -38,9 +38,11 @@ export default class Messages extends Component {
     return (
       <div>
         <h2 id="tweetHeader"><ion-icon id="pulseStart" name="pulse"></ion-icon> Our Pulse<ion-icon id="pulseEnd" name="pulse"></ion-icon> </h2>
+        <br></br>
         <Link to="/community/messages/new" >
         <ion-icon size="large" name="add-circle-outline"></ion-icon>
         </Link>
+        <br></br>
         {/* <UserAside getUser={this.getUser}/> */}
 
         {this.state.messages !== null &&
@@ -49,10 +51,11 @@ export default class Messages extends Component {
             let url = messages.user ? messages.user.url : "unknown";
             return (
               <div>
+                <br></br>
                 <div className="row">
                   <div className="col-md-6">
-                    <div style={{ border: "3px solid gray" }}>
-                      <div className="message-area">
+                    <div >
+                      <div  className="message-area">
                         <div>
                           <img id="tweetPic" src={url} />
                         </div>
@@ -60,11 +63,9 @@ export default class Messages extends Component {
                           <ion-icon size="large" name="finger-print" /> @
                           {username} &nbsp;
                         </Link>
-
-                        <h3>{messages.title}</h3>
-                        <p>
-                           <span>{messages.text} </span>
-                        </p>
+         
+                        <br></br>
+                        <br></br>
                         <Link to="/"><button className="btn btn-danger">Delete</button></Link>
                         <br></br>
                         <span className="text-muted">
@@ -73,9 +74,19 @@ export default class Messages extends Component {
                           </Moment>
                         </span>
                       </div>
+
                     </div>
+
+
                   </div>
+                  <div className="col-md-6">
+                    <h4 id="tweetMessage">{messages.title}</h4>
+                        <p>
+                           <span id="tweetText">{messages.text} </span>
+                        </p>
+                    </div>
                 </div>
+                <hr id="tweetLine"></hr>
               </div>
             );
           })}

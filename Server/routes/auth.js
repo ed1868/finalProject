@@ -129,18 +129,24 @@ router.post('/signup',  uploadCload.single('url'), (req, res, next) => {
   });
 });
 
-router.get('/search', (req, res) => {
-  const request = require('request');
 
+// ///// MEDICAL APP ROUTE//////
+
+router.get('/search/:id', (req, res) => {
+  const request = require('request');
+  const query = req.params.id;
+  console.log(query);
   const options = {
-    url: 'https://api.lexigram.io/v1/lexigraph/search/?limit=20&q=diabetes',
+    url: `https://api.lexigram.io/v1/lexigraph/search/?limit=10&q=${query}`,
     headers: {
       Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdSI6Imx4ZzphcGkiLCJzYyI6WyJrZzpyZWFkIiwiZXh0cmFjdGlvbjpyZWFkIl0sImFpIjoiYXBpOjY2YjRlYjE3LTE0ZDctNjBmNy00Y2QyLTRmYzI4NGY5NTE2MyIsInVpIjoidXNlcjoyYTk1YTJjNS0zZDRlLTQxOWUtMjhhZi01ODNjMDZjMjA5YzUiLCJpYXQiOjE1NDQ0NTcxMTl9.Cn77llDtcDDnOfiYjQrjnJ8guCTpjkOfdkiiR-subqI',
     },
   };
 
   request(options, (err, responsePayload, body) => {
-    res.json(responsePayload);
+    const label = responsePayload;
+    // res.json(responsePayload);
+    res.json(label);
   });
 });
 

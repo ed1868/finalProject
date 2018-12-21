@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: start;
   z-index: -1;
-  background-image: url("../images/homepageLogo.png");
+  background-image: url("../images/homeDoc.png");
   text-align: center;
   padding: 7rem;
   background-position: center center;
@@ -50,9 +50,33 @@ h2:hover {
   color:black;
 }
 #footer {
-  background-color:rgba(5, 41, 45, 0.31);
+
+
+}
+#hack{
+  background-color: black;
+  width: 100%;
 }
 
+#hackTwo{
+  text-align: left;
+}
+#contactUs{
+  margin-left: 100px;
+  padding-bottom: 5px;
+}
+#hackTwo a {
+  text-align: left;
+  margin-right:200px;
+  padding-bottom: 2px;
+}
+.icons{
+  padding-right: 10px;
+}
+#hackThree a{
+  text-align: left;
+
+}
 .rowComponent{
   /* text-align: left; */
 
@@ -89,6 +113,19 @@ h2:hover {
   }
 
   ::placeholder { 
-    color: white;
+    color: black;
     opacity: 2; 
+  }
+
+  #queryList{
+    color:white;  
+
+    margin-top:60px;
+  }
+
+  .listItem{
+    list-style: none;
+    color:white;
+    text-transform: uppercase; 
+    font-size:20px;
   }

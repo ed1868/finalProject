@@ -1,17 +1,36 @@
 #tweetPic {
-  height:100px;
-  width:100px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
 }
 
 #tweetHeader {
   font-size: 80px;
+
+  -webkit-animation: fadein 4s;
 }
 
-#pulseStart{
+#pulseStart {
   transform: scaleX(-1);
   -moz-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   -ms-transform: scaleX(-1);
 }
 
+#tweetMessage {
+  text-align: center;
+  padding-top: 60px;
+}
+
+#tweetText {
+  color: #29a3ef;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

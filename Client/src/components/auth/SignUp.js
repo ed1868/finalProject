@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
 import { Redirect } from "react-router-dom";
+import './signUp.css'
 
 export default class Signup extends Component {
   constructor(props) {
@@ -90,11 +91,11 @@ export default class Signup extends Component {
         <div className="row justify-content-md-center text-center">
           <div className="col-md-4">
         <form onSubmit={this.handleFormSubmit}>
-        <h2>Become Part of The [vital]ity Community ! </h2>
+        <h2>Become Part of The [vital]ity ! </h2>
         <label htmlFor="username">Username : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="username"
                   name="username"
                   onChange={e => this.handleChange(e)}
@@ -104,7 +105,7 @@ export default class Signup extends Component {
                 <label htmlFor="email">Email : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="email"
                   name="email"
                   onChange={e => this.handleChange(e)}
@@ -113,7 +114,7 @@ export default class Signup extends Component {
                 <label htmlFor="name">Name : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="name"
                   name="name"
                   onChange={e => this.handleChange(e)}
@@ -122,19 +123,19 @@ export default class Signup extends Component {
                 <label htmlFor="password">Password : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="password"
                   name="password"
                   onChange={e => this.handleChange(e)}
                   type="password"
                 />
                 <label htmlFor="url">Profile Photo : </label>
-                <input className="form-control" type="file" name="url" onChange={e => this.handleChange(e)} />
+                <input className="form-control form" type="file" name="url" onChange={e => this.handleChange(e)} />
 
                 <label htmlFor="dob">Date Of Birth : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="dob"
                   name="dob"
                   onChange={e => this.handleChange(e)}
@@ -144,7 +145,7 @@ export default class Signup extends Component {
                 <label htmlFor="medicalLicenseNumber">Medical License Number : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="medicalLicenseNumber"
                   name="medicalLicenseNumber"
                   onChange={e => this.handleChange(e)}
@@ -154,7 +155,7 @@ export default class Signup extends Component {
                 <label htmlFor="gender">Gender : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="gender"
                   name="gender"
                   placeholder="Male , Female , Other"
@@ -164,7 +165,7 @@ export default class Signup extends Component {
                 <label htmlFor="experience">Years Of Experience : </label>
                 <input
                   autoComplete="off"
-                  className="form-control"
+                  className="form-control form"
                   id="experience"
                   name="experience"
                   onChange={e => this.handleChange(e)}
@@ -172,7 +173,13 @@ export default class Signup extends Component {
                 />
                 <br></br>
           
-          <input type="submit" value="Signup" />
+                    <button
+                  type="submit"
+                  className="btn btn-dark btn-block btn-lg"
+                  value="SignUp"
+                >
+                  Sign Up
+                </button>
         </form>
         </div>
         </div>

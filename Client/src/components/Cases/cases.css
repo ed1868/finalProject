@@ -5,6 +5,7 @@
 
 #patientHeader{
   font-size: 80px;
+  -webkit-animation: fadein 4s;
 }
 hr {
   background-color:black;
@@ -29,4 +30,19 @@ hr {
   -moz-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   -ms-transform: scaleX(-1);
+}
+
+/* .fade
+{
+        opacity:0.5;
+}
+.fade:hover
+{
+        opacity:1;
+} */
+
+
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
