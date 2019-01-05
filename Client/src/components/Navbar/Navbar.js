@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AuthService from "../auth/AuthService";
 import Logo from "../images/pulse-heartbeat-rate-heart-love-medical-2-58385.png";
 import "./navbar.css";
+import { Redirect } from "react-router-dom";
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export default class NavBar extends Component {
     this.props = props;
     this.state = { loggedInUser: this.props["userInSession"] };
     this.service = new AuthService();
+    this.redirect= false
   }
 
   willReceiveProps(props) {
@@ -17,14 +19,18 @@ export default class NavBar extends Component {
   }
 
   logOutHandler = e => {
+    console.log('----props----',this.props)
     this.props.logout();
+    this.redirect = true;
   };
 
-  componentDidMount() {
-    //this.willReceiveProps();
-  }
+
 
   render() {
+    if (this.redirect) {
+      return <Redirect to="/login" />;
+    }
+
     console.log(this.props.userInSession);
     if (this.props.userInSession != null) {
       console.log("esteeee", this.state.loggedInUser);
@@ -45,7 +51,10 @@ export default class NavBar extends Component {
                   <Link to="/community">Community</Link>
                 </li>
                 <li>
-                  <Link to="/logout">
+                  <Link to="/:id/user-profile">Profile</Link>
+                </li>
+                <li>
+                  <Link to="/auth/logout">
                     <a onClick={this.logOutHandler}>Logout</a>
                   </Link>
                 </li>

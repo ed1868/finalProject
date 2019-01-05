@@ -53,7 +53,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar fetchUser={this.fetchUser} userInSession={this.state.user}/>
+            <Navbar fetchUser={this.fetchUser} userInSession={this.state.user} logout={this.logout}/>
             <Switch>
               <Route
                 exact
@@ -71,7 +71,11 @@ class App extends Component {
                 path="/login"
                 render={() => <Login getUser={this.getUser} />}
               />
-              <Route exact path="/logout" component={this.getUser} />
+              <Route 
+              exact 
+              path="/logout" 
+              render={() => <Main getUser={this.getUser} logout={this.logout} />}
+              />
 
               <Route
                 exact
@@ -99,7 +103,7 @@ class App extends Component {
               <Route
                 exact
                 path="/community"
-                render={() => <CommunityMessages getUser={this.getUser} />}
+                render={() => <CommunityMessages getUser={this.getUser} userInSession={this.state.user}/>}
               />
               <Route
                 exact

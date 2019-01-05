@@ -12,10 +12,12 @@ const messagesApi = axios.create({
 });
 
 export default class Messages extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.props = props;
     this.state = {
-      messages: null
+      messages: null,
+      loggedInUser: this.props["userInSession"],
     };
   }
 
@@ -34,7 +36,32 @@ export default class Messages extends Component {
       });
   }
 
+  willReceiveProps(props) {
+    this.setState({ ...this.state, loggedInUser: this.props["userInSession"] });
+  }
+
+  showDeleteButton = () =>{
+    return this.state.messages.map(message => {
+      console.log(this.props.userInSession.username)
+      console.log("hello----", message.user.username);
+
+      if (this.props.userInSession.username !== message.user.username){
+        return console.log("The User Signed in right now does not have access to another status delete button "); 
+      }
+      
+      if(this.props.userInSession.username == message.user.username){
+        return (
+          <div>
+            <button className="btn btn-danger">Delete</button>
+            <hr></hr>
+          </div>
+    
+        )
+      }
+   })
+ }
   render() {
+        console.log(this.props.userInSession);
     return (
       <div>
         <h2 id="tweetHeader"><ion-icon id="pulseStart" name="pulse"></ion-icon> Our Pulse<ion-icon id="pulseEnd" name="pulse"></ion-icon> </h2>
@@ -66,7 +93,7 @@ export default class Messages extends Component {
          
                         <br></br>
                         <br></br>
-                        <Link to="/"><button className="btn btn-danger">Delete</button></Link>
+                        {/* <Link to="/"><button className="btn btn-danger">Delete</button></Link> */}
                         <br></br>
                         <span className="text-muted">
                           <Moment className="text-muted" format="Do MMM YYYY">
@@ -74,7 +101,7 @@ export default class Messages extends Component {
                           </Moment>
                         </span>
                       </div>
-
+                      <div>{this.showDeleteButton()}</div>
                     </div>
 
 
