@@ -151,8 +151,9 @@ router.get('/search/:id', (req, res) => {
 });
 
 // /////////////////////LOG OUT ROUTE///////////////////////
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   req.logout();
+  console.log('ITS GOING INNNNNNN');
   res.status(200).json({ message:'You Logged Out Sucessfully' });
 });
 
