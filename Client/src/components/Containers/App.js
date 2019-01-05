@@ -80,7 +80,7 @@ class App extends Component {
               <Route
                 exact
                 path="/cases"
-                render={() => <Cases getUser={this.getUser} />}
+                render={() => <Cases getUser={this.getUser} fetchUser={this.fetchUser} userInSession={this.state.user}/>}
               />
               <Route
                 exact
@@ -97,7 +97,7 @@ class App extends Component {
               <Route
                 exact
                 path="/cases/add/new"
-                render={() => <CasesNew getUser={this.getUser} />}
+                render={() => <CasesNew getUser={this.getUser} fetchUser={this.fetchUser} userInSession={this.state.user}/>}
               />
 
               <Route

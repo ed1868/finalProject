@@ -27,13 +27,20 @@ export default class Cases extends Component {
         console.log("Error is: ", err);
       });
   }
+  showAddButton = () =>{
 
+     if (this.props.userInSession){
+        return  <ion-icon size="large" name="add-circle-outline"></ion-icon>
+      }
+         
+ }
   render() {
+    console.log(this.props.userInSession);
     return (
       <div id="casePage">
         <h2 id="patientHeader"><ion-icon id="pulseStart" name="pulse"></ion-icon> Patient Cases<ion-icon id="pulseEnd" name="pulse"></ion-icon> </h2> 
         <br></br>
-        <Link id="link" to="/cases/add/new" ><ion-icon size="large" name="add-circle-outline"></ion-icon></Link>
+        <Link id="link" to="/cases/add/new" >{this.showAddButton()}</Link>
         
         {this.state.cases !== null &&
           this.state.cases.map(cases => {
@@ -50,42 +57,6 @@ export default class Cases extends Component {
                   </h2>
                   <hr></hr>
                 </div>
-                {/* <div>
-                  <img src={cases.url} />
-                </div>
-                <div>
-                  <h3>
-                    Symptoms : <span>{cases.symptoms}</span>
-                  </h3>
-                </div>
-                <div>
-                  <h3>
-                    TimeFrame : <span>{cases.timeframe}</span>
-                  </h3>
-                </div>
-                <div>
-                  <div style={{ border: "1px solid black" }}>
-                    <h2>Vital Signs</h2>
-                    <ul>
-                      <li>
-                        Systolic : <span>{cases.systolic}</span>
-                      </li>
-                      <li>
-                        Diastolic : <span>{cases.diastolic}</span>
-                      </li>
-                      <li>
-                        Oxygen : <span>{cases.oxygen}</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div>
-                  <h2>Rate Of Pain 1 - 10 : {cases.rateOfPain}</h2>
-                </div>
-                <div>
-                  <p>{cases.description}</p>
-                  <quote>{cases.author}</quote>
-                </div> */}
               </div>
  
             );

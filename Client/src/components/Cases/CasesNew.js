@@ -26,9 +26,12 @@ export default class Cases extends Component {
       oxygen: "",
       redirect: false,
 
+
     };
+
     this.CaseService = new CaseService();
   }
+
 
   handleFormSubmit = e => {
     e.preventDefault();
@@ -83,7 +86,10 @@ export default class Cases extends Component {
 };
 
   
-  
+willReceiveProps(props) {
+  this.setState({ ...this.state, loggedInUser: this.props["userInSession"] });
+}
+
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -101,6 +107,7 @@ export default class Cases extends Component {
     if (this.state && this.state.redirect) {
       return <Redirect to="/cases" />;
     } else {
+      console.log(this.props.userInSession);
       return (
         <div>
           <h1>Add a Case</h1>
