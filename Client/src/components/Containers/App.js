@@ -85,7 +85,7 @@ class App extends Component {
               <Route
                 exact
                 path="/cases/:id"
-                render={props => <Case getUser={this.getUser} {...props} />}
+                render={props => <Case getUser={this.getUser} fetchUser={this.fetchUser} userInSession={this.state.user} {...props} />}
               />
               <Route
                 exact
