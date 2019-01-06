@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/Medical-Logo.8397ec06.png"
   },
   {
-    "revision": "bb5df0a0a405d06af190",
-    "url": "/static/css/main.729c7191.chunk.css"
+    "revision": "e97efaf697be594fe57f",
+    "url": "/static/css/main.19458e47.chunk.css"
   },
   {
     "revision": "8d182c7fb3e4b9cdf659",
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/static/media/pulse-heartbeat-rate-heart-love-medical-2-58385.bfc1ad49.png"
   },
   {
-    "revision": "bb5df0a0a405d06af190",
-    "url": "/static/js/main.bb5df0a0.chunk.js"
+    "revision": "e97efaf697be594fe57f",
+    "url": "/static/js/main.e97efaf6.chunk.js"
   },
   {
     "revision": "ba0bc3af387c1bac743e07122649fcf8",
@@ -36,11 +36,11 @@ self.__precacheManifest = [
     "url": "/static/media/medicalLogo.063a08ba.png"
   },
   {
-    "revision": "653125f58c517ef902dde8793593da00",
-    "url": "/static/media/homeDoc.653125f5.png"
+    "revision": "bad1790e37017b72b5a12a62a3dfc1ac",
+    "url": "/static/media/homepageLogo.bad1790e.png"
   },
   {
-    "revision": "317946f14db50b18a4f0859cbba009d0",
+    "revision": "51b431a8f022b6875900894812b6c422",
     "url": "/index.html"
   }
 ];
